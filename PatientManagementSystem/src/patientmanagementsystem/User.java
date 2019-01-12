@@ -5,10 +5,19 @@
  */
 package patientmanagementsystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Avebry
  */
 public class User {
+    
+    private String id;
+    private String password;
+    private String givenName;
+    private String surName;
+    private String address;
+    private ArrayList<String> notifications;
     
 }

@@ -5,10 +5,17 @@
  */
 package patientmanagementsystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Avebry
  */
-public class Patient {
+public class Patient extends User{
+    
+    private String gender;
+    private int age;
+    private Boolean approvedAccount;
+    private ArrayList<Appointment> appointmentList;
     
 }

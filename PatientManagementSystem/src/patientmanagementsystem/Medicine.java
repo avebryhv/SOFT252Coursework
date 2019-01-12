@@ -10,5 +10,6 @@ package patientmanagementsystem;
  * @author Avebry
  */
 public class Medicine {
-    
+    private String name;
+    private Integer stock;
 }

@@ -9,6 +9,6 @@ package patientmanagementsystem;
  *
  * @author Avebry
  */
-public class Admin {
+public class Admin extends User{
     
 }

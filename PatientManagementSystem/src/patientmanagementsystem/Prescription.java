@@ -5,10 +5,15 @@
  */
 package patientmanagementsystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Avebry
  */
 public class Prescription {
-    
+    private Patient patient;
+    private ArrayList<Medicine> medicineList;
+    private ArrayList<Integer> quantities;
+    private String dosage;
 }

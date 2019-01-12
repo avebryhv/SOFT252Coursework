@@ -5,10 +5,12 @@
  */
 package patientmanagementsystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Avebry
  */
-public class Doctor {
-    
+public class Doctor extends User{
+    private ArrayList<String> reviewList;
 }

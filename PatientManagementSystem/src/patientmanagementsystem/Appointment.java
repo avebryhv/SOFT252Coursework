@@ -5,10 +5,16 @@
  */
 package patientmanagementsystem;
 
+import java.util.Date;
+
 /**
  *
  * @author Avebry
  */
 public class Appointment {
-    
+    private Doctor doctor;
+    private Patient patient;
+    private Prescription prescription;
+    private Date time;
+    private String notes;
 }
