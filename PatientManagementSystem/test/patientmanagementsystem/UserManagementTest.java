@@ -85,17 +85,25 @@ public class UserManagementTest {
     @Test
     public void testLogIn() {
         System.out.println("Testing Log In");
-        test.CreatePatient("Male", 33, "pass", "Billy", "Herrington", "2 Street");
-        test.LogIn("P0000", "pass");
-        Assert.assertEquals(test.getCurrentUser().getSurName(), "Herrington");
+        test.CreatePatient("Male", 33, "pass", "TEST", "MAN", "2 Street");        
+        Assert.assertEquals(test.LogIn("P0000", "pass"), true);
     }
 
     @Test
     public void testGetCurrentUser() {
+        System.out.println("Testing Get Current");
+        test.CreatePatient("Male", 33, "pass", "TEST", "MAN", "2 Street");  
+        test.LogIn("P0000", "pass");
+        Assert.assertEquals(test.getCurrentUser().getSurName(), "MAN");
     }
 
     @Test
     public void testGetUserByID() {
+        System.out.println("Testing Get By ID");
+        test.CreatePatient("Male", 33, "pass", "TEST", "ONE", "2 Street");  
+        test.CreateDoctor("pass", "TEST", "TWO", "2 Street");
+        test.CreateSecretary("pass", "TEST", "THREE", "2 Street");
+        Assert.assertEquals(test.getUserByID("D0001").getSurName(), "TWO");
     }
     
 }
