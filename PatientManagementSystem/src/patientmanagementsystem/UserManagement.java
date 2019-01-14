@@ -12,6 +12,7 @@ import java.util.ArrayList;
  * @author Avebry
  */
 public class UserManagement {
+    private static UserManagement uniqueInstance = null;
     private ArrayList<User> userList;
     private User currentUser;
 
@@ -19,7 +20,13 @@ public class UserManagement {
         userList = new ArrayList<User>();
     }
     
-    
+    public static UserManagement getInstance()
+    {
+        if (uniqueInstance == null){      
+    	uniqueInstance = new UserManagement(); 
+        }
+   	return uniqueInstance;
+    }
     
     public int UserCount()
     {
@@ -34,29 +41,30 @@ public class UserManagement {
     
     public void CreatePatient(String gender, int age, String password, String givenName, String surName, String address)
     {
-        String newID = "P" + Integer.toString(UserCount());
+        String newID = "P" + String.format("%04d",UserCount());
         Patient p = new Patient(gender, age, newID, password, givenName, surName, address);
         AddUser(p);
-        System.out.println("Patient Added with id " + newID);
+        System.out.println("Patient Added with id " + newID + ", password " + password);
     }
     
     public void CreateDoctor(String password, String givenName, String surName, String address)
     {
-        String newID = "D" + Integer.toString(UserCount());
+        String newID = "D" + String.format("%04d",UserCount());
         Doctor d = new Doctor(newID, password, givenName, surName, address);
         AddUser(d);
     }
     
     public void CreateAdmin(String password, String givenName, String surName, String address)
     {
-        String newID = "A" + Integer.toString(UserCount());
+        String newID = "A" + String.format("%04d", UserCount());
         Admin a = new Admin(newID, password, givenName, surName, address);
         AddUser(a);
+        System.out.println("Admin added with id " + newID + ", password " + password);
     }
     
     public void CreateSecretary(String password, String givenName, String surName, String address)
     {
-        String newID = "S" + Integer.toString(UserCount());
+        String newID = "S" + String.format("%04d",UserCount());
         Secretary s = new Secretary(newID, password, givenName, surName, address);
         AddUser(s);
     }
@@ -80,6 +88,11 @@ public class UserManagement {
         }
         return canLogIn;
     }
+    
+    public void LogOut()
+    {
+        currentUser = null;
+    }
 
     public User getCurrentUser() {
         return currentUser;
@@ -88,7 +101,7 @@ public class UserManagement {
     public User getUserByID(String toGet)
     {
         for (int i = 0; i < UserCount(); i++) {
-            if (userList.get(i).getId() == toGet) {
+            if (userList.get(i).getId().equals(toGet)) {
                 return userList.get(i);
             }
         }

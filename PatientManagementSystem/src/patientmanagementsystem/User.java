@@ -34,7 +34,7 @@ public abstract class User {
     
     public Boolean LogIn(String idInput, String passInput)
     {
-        if (idInput == id && passInput == password) {
+        if (idInput.equals(id) && passInput.equals(password)) {
             return true;
         }
         else

@@ -16,14 +16,13 @@ public class PatientManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        UserManagement userManager = new UserManagement();
-        userManager.CreatePatient("Male", 23, "bepis", "Big", "Bepsi", "long dong lane");
-        
-        if (userManager.LogIn("P0", "bepis")) {
-            User u = userManager.getUserByID("P0");
-            System.out.println(u.getSurName());
+        UserManagement userManager = UserManagement.getInstance();
+        userManager.CreateAdmin("bepis", "Big", "Bepsi", "long dong lane");
+        System.out.println(userManager.UserCount());
+        if (userManager.LogIn("A0", "bepis")) {            
+            System.out.println("logged in");
         }
-        
+        //User u = userManager.getUserByID("P0");
         
         
     }
