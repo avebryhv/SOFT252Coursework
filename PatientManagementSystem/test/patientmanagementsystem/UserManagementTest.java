@@ -54,19 +54,28 @@ public class UserManagementTest {
     public void testCreatePatient() {
         System.out.println("Testing Patient Creation");
         test.CreatePatient("Male", 33, "pass", "Billy", "Herrington", "2 Street");
-        Assert.assertNotNull("Test patient exists",test.getUserByID("P0"));
+        Assert.assertNotNull("Test patient exists",test.getUserByID("P0000"));
     }
 
     @Test
     public void testCreateDoctor() {
+        System.out.println("Testing Doctor Creation");
+        test.CreateDoctor("pass", "David", "Hayter", "6 Street");
+        Assert.assertNotNull("Test doctor exists",test.getUserByID("D0000"));
     }
 
     @Test
     public void testCreateAdmin() {
+        System.out.println("Testing Admin Creation");
+        test.CreateAdmin("pass", "Steven", "Armstrong", "9 Street");
+        Assert.assertNotNull("Test admin exists",test.getUserByID("A0000"));
     }
 
     @Test
     public void testCreateSecretary() {
+        System.out.println("Testing Secretary Creation");
+        test.CreateSecretary("pass", "Kazuhira", "Miller", "1 Street");
+        Assert.assertNotNull("Test secretary exists",test.getUserByID("S0000"));
     }
 
     @Test
@@ -77,7 +86,7 @@ public class UserManagementTest {
     public void testLogIn() {
         System.out.println("Testing Log In");
         test.CreatePatient("Male", 33, "pass", "Billy", "Herrington", "2 Street");
-        test.LogIn("P0", "pass");
+        test.LogIn("P0000", "pass");
         Assert.assertEquals(test.getCurrentUser().getSurName(), "Herrington");
     }
 

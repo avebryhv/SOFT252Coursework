@@ -19,8 +19,9 @@ public class PatientManagementSystem {
         UserManagement userManager = UserManagement.getInstance();
         userManager.CreateAdmin("bepis", "Big", "Bepsi", "long dong lane");
         System.out.println(userManager.UserCount());
-        if (userManager.LogIn("A0", "bepis")) {            
+        if (userManager.LogIn("A0000", "bepis")) {            
             System.out.println("logged in");
+            
         }
         //User u = userManager.getUserByID("P0");
         

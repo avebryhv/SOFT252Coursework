@@ -52,6 +52,7 @@ public class UserManagement {
         String newID = "D" + String.format("%04d",UserCount());
         Doctor d = new Doctor(newID, password, givenName, surName, address);
         AddUser(d);
+        System.out.println("Doctor Added with id " + newID + ", password " + password);
     }
     
     public void CreateAdmin(String password, String givenName, String surName, String address)
@@ -67,6 +68,7 @@ public class UserManagement {
         String newID = "S" + String.format("%04d",UserCount());
         Secretary s = new Secretary(newID, password, givenName, surName, address);
         AddUser(s);
+        System.out.println("Secretary Added with id " + newID + ", password " + password);
     }
     
     public void RemoveID(String i)

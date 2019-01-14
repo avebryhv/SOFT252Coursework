@@ -12,12 +12,16 @@ import java.util.ArrayList;
  * @author Avebry
  */
 public class Admin extends User{
-
+    UserManagement userManager;
     public Admin(String id, String password, String givenName, String surName, String address) {
         super(id, password, givenName, surName, address);
+        userManager = UserManagement.getInstance();
     }
     
-    
+    public void CreateSecretary(String password, String givenName, String surName, String address)
+    {
+        userManager.CreateSecretary(password, givenName, surName, address);
+    }
 
     
     
