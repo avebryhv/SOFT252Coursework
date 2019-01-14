@@ -17,5 +17,15 @@ public class Patient extends User{
     private int age;
     private Boolean approvedAccount;
     private ArrayList<Appointment> appointmentList;
+
+    public Patient(String gender, int age, String id, String password, String givenName, String surName, String address) {
+        super(id, password, givenName, surName, address);
+        this.gender = gender;
+        this.age = age;
+    }
+
+    
+    
+    
     
 }

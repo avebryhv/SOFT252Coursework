@@ -5,10 +5,20 @@
  */
 package patientmanagementsystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Avebry
  */
 public class Admin extends User{
+
+    public Admin(String id, String password, String givenName, String surName, String address) {
+        super(id, password, givenName, surName, address);
+    }
+
+    
+    
+    
     
 }

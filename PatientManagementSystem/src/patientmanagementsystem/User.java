@@ -11,7 +11,7 @@ import java.util.ArrayList;
  *
  * @author Avebry
  */
-public class User {
+public abstract class User {
     
     private String id;
     private String password;
@@ -19,5 +19,56 @@ public class User {
     private String surName;
     private String address;
     private ArrayList<String> notifications;
+
+    public User(String id, String password, String givenName, String surName, String address) {
+        this.id = id;
+        this.password = password;
+        this.givenName = givenName;
+        this.surName = surName;
+        this.address = address;
+    }
+
+    
+
+    
+    
+    public Boolean LogIn(String idInput, String passInput)
+    {
+        if (idInput == id && passInput == password) {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public String getGivenName() {
+        return givenName;
+    }
+
+    public String getSurName() {
+        return surName;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public ArrayList<String> getNotifications() {
+        return notifications;
+    }
+    
+    
+    
+    
     
 }

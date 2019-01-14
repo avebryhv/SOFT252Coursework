@@ -5,10 +5,20 @@
  */
 package patientmanagementsystem;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author Avebry
  */
 public class Secretary extends User{
+
+    public Secretary(String id, String password, String givenName, String surName, String address) {
+        super(id, password, givenName, surName, address);
+    }
+
+   
+    
+    
     
 }
