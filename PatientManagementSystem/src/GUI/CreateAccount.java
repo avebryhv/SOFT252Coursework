@@ -5,12 +5,15 @@
  */
 package GUI;
 
+import Controller.Controller;
+
 /**
  *
  * @author ahoughton-vowles
  */
 public class CreateAccount extends javax.swing.JFrame {
 
+    Controller controller = new Controller();
     /**
      * Creates new form CreateAccount
      */
@@ -64,6 +67,11 @@ public class CreateAccount extends javax.swing.JFrame {
 
         btn_Create.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Create.setText("Apply");
+        btn_Create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CreateActionPerformed(evt);
+            }
+        });
 
         jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel7.setText("Password");
@@ -137,6 +145,12 @@ public class CreateAccount extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_CreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CreateActionPerformed
+        // TODO add your handling code here:
+        controller.CreatePatientAccount(txt_Gender.getText(), Integer.parseInt(txt_Age.getText()) , txt_Password.getText(), txt_Given.getText(), txt_Sur.getText(), txt_Address.getText());
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_CreateActionPerformed
 
     /**
      * @param args the command line arguments

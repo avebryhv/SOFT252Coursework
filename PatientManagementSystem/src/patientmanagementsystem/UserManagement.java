@@ -6,6 +6,7 @@
 package patientmanagementsystem;
 
 import java.util.ArrayList;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -48,6 +49,7 @@ public class UserManagement {
         AddUser(p);
         System.out.println("Patient Added with id " + newID + ", password " + password);
         AddToApproval(p);
+        JOptionPane.showMessageDialog(null, "Account created: \n ID: " + p.getId() + "\n Password: " + p.getPassword());
     }
     
     public void CreateDoctor(String password, String givenName, String surName, String address)
@@ -115,19 +117,37 @@ public class UserManagement {
     
     private void AddToApproval(Patient p)
     {
-        waitingApproval.add(p);
-        System.out.println(p.getId() + " waiting for approval");
+        waitingApproval.add(p);        
+        for (int i = 0; i < UserCount(); i++) {
+            if (userList.get(i).getId().charAt(0) == 'S') {
+                userList.get(i).AddNotification(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval");
+            }
+        }
+        System.out.println(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval");
     }
     
-    public void ApproveAccount(String ID)
+    public Boolean ApproveAccount(String ID)
     {
         for (int i = 0; i < waitingApproval.size(); i++) {
             if (waitingApproval.get(i).getId().equals(ID)) {
                 waitingApproval.get(i).setApprovedAccount(true);
+                waitingApproval.remove(waitingApproval.get(i));
                 System.out.println(ID + " approved");
-                break;
+                return true;
+            }
+        }   
+        return false;
+    }
+    
+    public Boolean CheckApproved(String ID)
+    {
+        for (int i = 0; i < waitingApproval.size(); i++) {
+            if (ID.equals(waitingApproval.get(i).getId())) {
+                return true;
             }
         }
-        
+        return false;
     }
+    
+    
 }

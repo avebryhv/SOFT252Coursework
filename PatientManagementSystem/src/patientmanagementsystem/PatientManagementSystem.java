@@ -5,6 +5,8 @@
  */
 package patientmanagementsystem;
 
+import GUI.MainGUI;
+
 /**
  *
  * @author ahoughton-vowles
@@ -25,9 +27,8 @@ public class PatientManagementSystem {
             userManager.CreatePatient("Male", 3, "pass2", "yeet", "beat", "meme land");
         }
         userManager.LogOut();
-        if (userManager.LogIn("S0001", "pass")) {
-            userManager.ApproveAccount("P0002");
-        }
+        MainGUI initialForm = new MainGUI();
+        initialForm.setVisible(true);
         //User u = userManager.getUserByID("P0");
         
         

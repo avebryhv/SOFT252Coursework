@@ -26,6 +26,7 @@ public abstract class User {
         this.givenName = givenName;
         this.surName = surName;
         this.address = address;
+        notifications = new ArrayList<String>();
     }
 
     
@@ -67,7 +68,10 @@ public abstract class User {
         return notifications;
     }
     
-    
+    public void AddNotification(String note)
+    {
+        notifications.add(note);
+    }
     
     
     

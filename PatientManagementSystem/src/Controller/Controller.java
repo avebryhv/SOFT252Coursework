@@ -5,6 +5,12 @@
  */
 package Controller;
 
+import GUI.CreateAccount;
+import GUI.MainGUI;
+import GUI.SecretaryForm;
+import java.util.ArrayList;
+import javax.swing.JOptionPane;
+import patientmanagementsystem.User;
 import patientmanagementsystem.UserManagement;
 
 /**
@@ -15,10 +21,76 @@ public class Controller {
     
     UserManagement userManager;
     
-    public void LogIn(String ID, String password)
+    public Boolean LogIn(String ID, String password)
     {
         userManager = UserManagement.getInstance();
+        if (userManager.LogIn(ID, password)) {
+            System.out.println("Current ID: " + userManager.getCurrentUser().getId());
+            if (userManager.CheckApproved(userManager.getCurrentUser().getId())) {
+                JOptionPane.showMessageDialog(null, "Account Not Yet Approved");
+            }
+            else
+            {
+                //Login Here
+                switch(userManager.getCurrentUser().getId().charAt(0))
+                {
+                    case 'S':
+                        SecretaryForm secForm = new SecretaryForm();
+                        secForm.setVisible(true);
+                        return true;
+                        
+                    default:
+                        break;
+                }
+            }
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Login Details Incorrect");
+        }
+        return false;
     }
     
+    public void CreatePatientAccount(String gender, Integer age, String password, String givenName, String surName, String address)
+    {
+        userManager = UserManagement.getInstance();
+        userManager.CreatePatient(gender, age, password, givenName, surName, address);
+        
+    }
     
+    public void ShowCreatePatient()
+    {
+        CreateAccount form = new CreateAccount();
+        form.setVisible(true);
+    }
+    
+    public ArrayList<String> getNotifications(String ID)
+    {
+        userManager = UserManagement.getInstance();
+        return userManager.getCurrentUser().getNotifications();
+    }
+    
+    public User getCurrentUser()
+    {
+        userManager = UserManagement.getInstance();
+        return userManager.getCurrentUser();
+    }
+    
+    public void LogOut()
+    {
+        userManager.LogOut();
+        MainGUI newScreen = new MainGUI();
+        newScreen.setVisible(true);
+    }
+    
+    public void ApproveNewPatient()
+    {
+        String ID;
+        ID = JOptionPane.showInputDialog("Please input the ID of the account to approve");
+        if (userManager.ApproveAccount(ID)) {
+            JOptionPane.showMessageDialog(null, "Account Approved");
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Account Not Found");
+        }
+    }
 }
