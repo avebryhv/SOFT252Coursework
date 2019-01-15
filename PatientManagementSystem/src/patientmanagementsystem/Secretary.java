@@ -13,11 +13,18 @@ import java.util.ArrayList;
  */
 public class Secretary extends User{
 
+    UserManagement userManager;
+            
+    
     public Secretary(String id, String password, String givenName, String surName, String address) {
         super(id, password, givenName, surName, address);
+        userManager = UserManagement.getInstance();
     }
 
-   
+   public void ApprovePatient(String ID)
+   {
+       userManager.ApproveAccount(ID);
+   }
     
     
     

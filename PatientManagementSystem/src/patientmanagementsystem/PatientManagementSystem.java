@@ -21,7 +21,12 @@ public class PatientManagementSystem {
         System.out.println(userManager.UserCount());
         if (userManager.LogIn("A0000", "bepis")) {            
             System.out.println("logged in");
-            
+            userManager.CreateSecretary("pass", "Dongus", "Kongus", "STRONG dong lane");
+            userManager.CreatePatient("Male", 3, "pass2", "yeet", "beat", "meme land");
+        }
+        userManager.LogOut();
+        if (userManager.LogIn("S0001", "pass")) {
+            userManager.ApproveAccount("P0002");
         }
         //User u = userManager.getUserByID("P0");
         

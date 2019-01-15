@@ -14,10 +14,12 @@ import java.util.ArrayList;
 public class UserManagement {
     private static UserManagement uniqueInstance = null;
     private ArrayList<User> userList;
+    private ArrayList<Patient> waitingApproval;
     private User currentUser;
 
     public UserManagement() {
         userList = new ArrayList<User>();
+        waitingApproval = new ArrayList<Patient>();
     }
     
     public static UserManagement getInstance()
@@ -45,6 +47,7 @@ public class UserManagement {
         Patient p = new Patient(gender, age, newID, password, givenName, surName, address);
         AddUser(p);
         System.out.println("Patient Added with id " + newID + ", password " + password);
+        AddToApproval(p);
     }
     
     public void CreateDoctor(String password, String givenName, String surName, String address)
@@ -110,5 +113,21 @@ public class UserManagement {
         return null;
     }
     
+    private void AddToApproval(Patient p)
+    {
+        waitingApproval.add(p);
+        System.out.println(p.getId() + " waiting for approval");
+    }
     
+    public void ApproveAccount(String ID)
+    {
+        for (int i = 0; i < waitingApproval.size(); i++) {
+            if (waitingApproval.get(i).getId().equals(ID)) {
+                waitingApproval.get(i).setApprovedAccount(true);
+                System.out.println(ID + " approved");
+                break;
+            }
+        }
+        
+    }
 }

@@ -22,6 +22,15 @@ public class Patient extends User{
         super(id, password, givenName, surName, address);
         this.gender = gender;
         this.age = age;
+        approvedAccount = false;
+    }
+
+    public Boolean getApprovedAccount() {
+        return approvedAccount;
+    }
+
+    public void setApprovedAccount(Boolean approvedAccount) {
+        this.approvedAccount = approvedAccount;
     }
 
     
