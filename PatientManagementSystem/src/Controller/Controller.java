@@ -105,4 +105,16 @@ public class Controller {
         JOptionPane.showMessageDialog(null, "Account Termination Requested");
         userManager.getCurrentUser().AddNotification("Account Termination Requested");
     }
+    
+    public void DeletePatient()
+    {
+        String ID;
+        ID = JOptionPane.showInputDialog("Please input the ID of the Patient to delete");
+        if (ID.charAt(0) == 'P') {
+            userManager.RemoveUser(ID);
+        }else
+        {
+            JOptionPane.showMessageDialog(null, "Input ID not a valid patient ID");
+        }
+    }
 }

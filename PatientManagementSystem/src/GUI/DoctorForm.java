@@ -7,33 +7,20 @@ package GUI;
 
 import Controller.Controller;
 import java.util.ArrayList;
-import javax.swing.DefaultListModel;
 
 /**
  *
  * @author ahoughton-vowles
  */
-public class SecretaryForm extends javax.swing.JFrame {
+public class DoctorForm extends javax.swing.JFrame {
 
     Controller controller = new Controller();
     ArrayList<String> notifications;
-    
     /**
-     * Creates new form SecretaryForm
+     * Creates new form DoctorForm
      */
-    public SecretaryForm() {
+    public DoctorForm() {
         initComponents();
-        getNotifications();
-    }
-    
-    private void getNotifications()
-    {
-        notifications = controller.getNotifications(controller.getCurrentUser().getId());
-        DefaultListModel model = new DefaultListModel();        
-        for (int i = 0; i < notifications.size(); i++) {
-            model.addElement(notifications.get(i));
-        }
-        lst_noti.setModel(model);
     }
 
     /**
@@ -50,8 +37,6 @@ public class SecretaryForm extends javax.swing.JFrame {
         lst_Noti = new javax.swing.JScrollPane();
         lst_noti = new javax.swing.JList<>();
         btn_LogOut = new javax.swing.JButton();
-        btn_ApproveAccount = new javax.swing.JButton();
-        btn_Delete = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,35 +50,14 @@ public class SecretaryForm extends javax.swing.JFrame {
             }
         });
 
-        btn_ApproveAccount.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_ApproveAccount.setText("Approve New Account");
-        btn_ApproveAccount.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_ApproveAccountActionPerformed(evt);
-            }
-        });
-
-        btn_Delete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        btn_Delete.setText("Delete Patient Account");
-        btn_Delete.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_DeleteActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_LogOut)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(btn_ApproveAccount)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_Delete)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btn_LogOut)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 406, Short.MAX_VALUE)
                 .addComponent(lst_Noti, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -102,18 +66,14 @@ public class SecretaryForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                    .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 511, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btn_ApproveAccount)
-                            .addComponent(btn_Delete))
-                        .addGap(34, 34, 34)
                         .addComponent(btn_LogOut)))
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Secretary View", jPanel1);
+        jTabbedPane1.addTab("Doctor View", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -123,7 +83,7 @@ public class SecretaryForm extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
 
         pack();
@@ -134,16 +94,6 @@ public class SecretaryForm extends javax.swing.JFrame {
         controller.LogOut();
         this.setVisible(false);
     }//GEN-LAST:event_btn_LogOutActionPerformed
-
-    private void btn_ApproveAccountActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ApproveAccountActionPerformed
-        // TODO add your handling code here:
-        controller.ApproveNewPatient();
-    }//GEN-LAST:event_btn_ApproveAccountActionPerformed
-
-    private void btn_DeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_DeleteActionPerformed
-        // TODO add your handling code here:
-        controller.DeletePatient();
-    }//GEN-LAST:event_btn_DeleteActionPerformed
 
     /**
      * @param args the command line arguments
@@ -162,28 +112,25 @@ public class SecretaryForm extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(SecretaryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(SecretaryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(SecretaryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(SecretaryForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(DoctorForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new SecretaryForm().setVisible(true);
-                
+                new DoctorForm().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_ApproveAccount;
-    private javax.swing.JButton btn_Delete;
     private javax.swing.JButton btn_LogOut;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
