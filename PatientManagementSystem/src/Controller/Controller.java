@@ -5,7 +5,9 @@
  */
 package Controller;
 
+import GUI.AdminForm;
 import GUI.CreateAccount;
+import GUI.DoctorForm;
 import GUI.MainGUI;
 import GUI.PatientForm;
 import GUI.SecretaryForm;
@@ -43,6 +45,16 @@ public class Controller {
                     case 'P':
                         PatientForm patForm = new PatientForm();
                         patForm.setVisible(true);
+                        return true;
+                        
+                    case 'D':
+                        DoctorForm docForm = new DoctorForm();
+                        docForm.setVisible(true);
+                        return true;
+                        
+                    case 'A':
+                        AdminForm adForm = new AdminForm();
+                        adForm.setVisible(true);
                         return true;
                     default:
                         break;
@@ -82,6 +94,7 @@ public class Controller {
     
     public void LogOut()
     {
+        userManager = UserManagement.getInstance();
         userManager.LogOut();
         MainGUI newScreen = new MainGUI();
         newScreen.setVisible(true);
