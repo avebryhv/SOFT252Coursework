@@ -5,12 +5,20 @@
  */
 package Controller;
 
+import patientmanagementsystem.UserManagement;
+
 /**
  *
  * @author ahoughton-vowles
  */
-public class Controller {
+public class Controller {   
     
+    UserManagement userManager;
+    
+    public void LogIn(String ID, String password)
+    {
+        userManager = UserManagement.getInstance();
+    }
     
     
 }

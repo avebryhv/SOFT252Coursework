@@ -5,17 +5,21 @@
  */
 package GUI;
 
+import Controller.Controller;
+
 /**
  *
  * @author Avebry
  */
 public class MainGUI extends javax.swing.JFrame {
 
+    Controller controller = new Controller();
     /**
      * Creates new form MainGUI
      */
     public MainGUI() {
         initComponents();
+        
     }
 
     /**
@@ -55,6 +59,11 @@ public class MainGUI extends javax.swing.JFrame {
 
         btn_logIn.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_logIn.setText("Log In");
+        btn_logIn.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_logInActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -109,6 +118,11 @@ public class MainGUI extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_logInActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_logInActionPerformed
+        // TODO add your handling code here:
+        controller.LogIn(txt_Username.getText(), txt_Password.getText());
+    }//GEN-LAST:event_btn_logInActionPerformed
 
     /**
      * @param args the command line arguments
