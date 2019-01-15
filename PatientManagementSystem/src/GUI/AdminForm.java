@@ -7,6 +7,7 @@ package GUI;
 
 import Controller.Controller;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -21,8 +22,19 @@ public class AdminForm extends javax.swing.JFrame {
      */
     public AdminForm() {
         initComponents();
+        getNotifications();
     }
 
+    private void getNotifications()
+    {
+        notifications = controller.getNotifications(controller.getCurrentUser().getId());
+        DefaultListModel model = new DefaultListModel();        
+        for (int i = 0; i < notifications.size(); i++) {
+            model.addElement(notifications.get(i));
+        }
+        lst_noti.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -37,6 +49,8 @@ public class AdminForm extends javax.swing.JFrame {
         lst_Noti = new javax.swing.JScrollPane();
         lst_noti = new javax.swing.JList<>();
         btn_LogOut = new javax.swing.JButton();
+        btn_Create = new javax.swing.JButton();
+        btn_ViewRating = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -50,14 +64,33 @@ public class AdminForm extends javax.swing.JFrame {
             }
         });
 
+        btn_Create.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_Create.setText("Create New Account");
+        btn_Create.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_CreateActionPerformed(evt);
+            }
+        });
+
+        btn_ViewRating.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_ViewRating.setText("View Doctor Ratings");
+        btn_ViewRating.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ViewRatingActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_LogOut)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 220, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_LogOut)
+                    .addComponent(btn_Create)
+                    .addComponent(btn_ViewRating))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 126, Short.MAX_VALUE)
                 .addComponent(lst_Noti, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -66,9 +99,13 @@ public class AdminForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                    .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 252, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_ViewRating)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Create)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_LogOut)))
                 .addContainerGap())
         );
@@ -94,6 +131,17 @@ public class AdminForm extends javax.swing.JFrame {
         controller.LogOut();
         this.setVisible(false);
     }//GEN-LAST:event_btn_LogOutActionPerformed
+
+    private void btn_CreateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CreateActionPerformed
+        // TODO add your handling code here:
+        controller.ShowStaffCreator();
+    }//GEN-LAST:event_btn_CreateActionPerformed
+
+    private void btn_ViewRatingActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ViewRatingActionPerformed
+        // TODO add your handling code here:
+        DoctorRatings form = new DoctorRatings();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_ViewRatingActionPerformed
 
     /**
      * @param args the command line arguments
@@ -131,7 +179,9 @@ public class AdminForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Create;
     private javax.swing.JButton btn_LogOut;
+    private javax.swing.JButton btn_ViewRating;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JScrollPane lst_Noti;

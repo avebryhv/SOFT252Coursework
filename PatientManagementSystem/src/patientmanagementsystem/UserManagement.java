@@ -50,6 +50,11 @@ public class UserManagement {
         System.out.println("Patient Added with id " + newID + ", password " + password);
         AddToApproval(p);
         JOptionPane.showMessageDialog(null, "Account created: \n ID: " + p.getId() + "\n Password: " + p.getPassword());
+        for (int j = 0; j < UserCount(); j++) {
+                    if (userList.get(j).getId().charAt(0) == 'A') {
+                    userList.get(j).AddNotification(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") has been added");
+                    }
+                }
     }
     
     public void CreateDoctor(String password, String givenName, String surName, String address)
@@ -58,6 +63,11 @@ public class UserManagement {
         Doctor d = new Doctor(newID, password, givenName, surName, address);
         AddUser(d);
         System.out.println("Doctor Added with id " + newID + ", password " + password);
+        for (int j = 0; j < UserCount(); j++) {
+                    if (userList.get(j).getId().charAt(0) == 'A') {
+                    userList.get(j).AddNotification(d.getGivenName() + " " + d.getSurName() + "(" + d.getId() + ") has been added");
+                    }
+                }
     }
     
     public void CreateAdmin(String password, String givenName, String surName, String address)
@@ -66,6 +76,11 @@ public class UserManagement {
         Admin a = new Admin(newID, password, givenName, surName, address);
         AddUser(a);
         System.out.println("Admin added with id " + newID + ", password " + password);
+        for (int j = 0; j < UserCount(); j++) {
+                    if (userList.get(j).getId().charAt(0) == 'A') {
+                    userList.get(j).AddNotification(a.getGivenName() + " " + a.getSurName() + "(" + a.getId() + ") has been added");
+                    }
+                }
     }
     
     public void CreateSecretary(String password, String givenName, String surName, String address)
@@ -74,6 +89,11 @@ public class UserManagement {
         Secretary s = new Secretary(newID, password, givenName, surName, address);
         AddUser(s);
         System.out.println("Secretary Added with id " + newID + ", password " + password);
+        for (int j = 0; j < UserCount(); j++) {
+                    if (userList.get(j).getId().charAt(0) == 'A') {
+                    userList.get(j).AddNotification(s.getGivenName() + " " + s.getSurName() + "(" + s.getId() + ") has been added");
+                    }
+                }
     }
     
     public void RemoveID(String i)
@@ -169,5 +189,16 @@ public class UserManagement {
         System.out.println(ID + " removed");
     }
     
+    public ArrayList<Doctor> GetDoctors()
+    {
+        ArrayList<Doctor> list = new ArrayList<Doctor>();
+        for (int i = 0; i < UserCount(); i++) {
+            if (userList.get(i).getId().charAt(0) == 'D') {
+                list.add((Doctor)userList.get(i));
+            }
+        }
+        return list;      
+        
+    }    
     
 }

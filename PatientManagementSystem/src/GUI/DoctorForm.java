@@ -7,6 +7,7 @@ package GUI;
 
 import Controller.Controller;
 import java.util.ArrayList;
+import javax.swing.DefaultListModel;
 
 /**
  *
@@ -22,6 +23,17 @@ public class DoctorForm extends javax.swing.JFrame {
      */
     public DoctorForm() {
         initComponents();
+        getNotifications();
+    }
+    
+    private void getNotifications()
+    {
+        notifications = controller.getNotifications(controller.getCurrentUser().getId());
+        DefaultListModel model = new DefaultListModel();        
+        for (int i = 0; i < notifications.size(); i++) {
+            model.addElement(notifications.get(i));
+        }
+        lst_noti.setModel(model);
     }
 
     /**
@@ -74,13 +86,13 @@ public class DoctorForm extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        jTabbedPane1.addTab("Admin View", jPanel1);
+        jTabbedPane1.addTab("Doctor View", jPanel1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 683, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)

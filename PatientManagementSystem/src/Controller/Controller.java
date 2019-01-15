@@ -7,12 +7,14 @@ package Controller;
 
 import GUI.AdminForm;
 import GUI.CreateAccount;
+import GUI.CreateStaff;
 import GUI.DoctorForm;
 import GUI.MainGUI;
 import GUI.PatientForm;
 import GUI.SecretaryForm;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import patientmanagementsystem.Doctor;
 import patientmanagementsystem.User;
 import patientmanagementsystem.UserManagement;
 
@@ -80,6 +82,30 @@ public class Controller {
         form.setVisible(true);
     }
     
+    public void CreateSecretaryAccount(String password, String givenName, String surName, String address)
+    {
+        userManager = UserManagement.getInstance();
+        userManager.CreateSecretary(password, givenName, surName, address);
+    }
+    
+    public void CreateDoctorAccount(String password, String givenName, String surName, String address)
+    {
+        userManager = UserManagement.getInstance();
+        userManager.CreateDoctor(password, givenName, surName, address);
+    }
+    
+    public void CreateAdminAccount(String password, String givenName, String surName, String address)
+    {
+        userManager = UserManagement.getInstance();
+        userManager.CreateAdmin(password, givenName, surName, address);
+    }
+    
+    public void ShowStaffCreator()
+    {
+        CreateStaff form = new CreateStaff();
+        form.setVisible(true);
+    }
+    
     public ArrayList<String> getNotifications(String ID)
     {
         userManager = UserManagement.getInstance();
@@ -130,4 +156,62 @@ public class Controller {
             JOptionPane.showMessageDialog(null, "Input ID not a valid patient ID");
         }
     }
+    
+    public ArrayList<String> GetDoctorNames()
+    {
+        userManager = UserManagement.getInstance();
+        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<Doctor> doctors = userManager.GetDoctors();
+        for (int i = 0; i < doctors.size(); i++) {
+            list.add(doctors.get(i).getGivenName() + " " + doctors.get(i).getSurName());
+        }
+        return list;
+    }
+    
+    public ArrayList<String> GetDoctorReviews(String name)
+    {
+        userManager = UserManagement.getInstance();
+        ArrayList<Doctor> doctors = userManager.GetDoctors();
+        ArrayList<String> list = new ArrayList<String>();
+        
+        for (int i = 0; i < doctors.size(); i++) {
+            String docName = doctors.get(i).getGivenName() + " " + doctors.get(i).getSurName();
+            if (docName.equals(name)) {
+                list = doctors.get(i).getReviewList();
+            }
+        }
+        
+        return list;
+    }
+    
+    public void AddReview(String name, String review)
+    {
+        userManager = UserManagement.getInstance();
+        ArrayList<Doctor> doctors = userManager.GetDoctors();
+        for (int i = 0; i < doctors.size(); i++) {
+            String docName = doctors.get(i).getGivenName() + " " + doctors.get(i).getSurName();
+            if (docName.equals(name)) {
+                doctors.get(i).AddReview(review);
+                JOptionPane.showMessageDialog(null, "Review Added");
+                break;
+            }
+        }
+    }
+    
+    public void AddFeedback(String name, String feedback)
+    {
+        userManager = UserManagement.getInstance();
+        ArrayList<Doctor> doctors = userManager.GetDoctors();
+        for (int i = 0; i < doctors.size(); i++) {
+            String docName = doctors.get(i).getGivenName() + " " + doctors.get(i).getSurName();
+            if (docName.equals(name)) {
+                doctors.get(i).AddNotification("Feedback Recieved: " + feedback);
+                JOptionPane.showMessageDialog(null, "Feedback Submitted");
+                break;
+            }
+        }
+    }
+    
+    
+    
 }

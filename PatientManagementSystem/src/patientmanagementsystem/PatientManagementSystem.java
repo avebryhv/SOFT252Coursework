@@ -26,6 +26,7 @@ public class PatientManagementSystem {
             userManager.CreateSecretary("pass", "Dongus", "Kongus", "STRONG dong lane");
             userManager.CreatePatient("Male", 3, "pass2", "yeet", "beat", "meme land");
             userManager.CreateDoctor("pass", "Strong", "Kong", "STRONG dong lane");
+            userManager.CreateDoctor("pass", "Stronger", "Konger", "STRONGer dong lane");
             userManager.ApproveAccount("P0002");
         }
         userManager.LogOut();

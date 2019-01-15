@@ -16,8 +16,17 @@ public class Doctor extends User{
 
     public Doctor(String id, String password, String givenName, String surName, String address) {
         super(id, password, givenName, surName, address);
+        reviewList = new ArrayList<String>();
     }
 
+    public void AddReview(String review)
+    {
+        reviewList.add(review);
+    }
+
+    public ArrayList<String> getReviewList() {
+        return reviewList;
+    }
     
     
     

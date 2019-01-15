@@ -51,6 +51,7 @@ public class PatientForm extends javax.swing.JFrame {
         lst_noti = new javax.swing.JList<>();
         btn_LogOut = new javax.swing.JButton();
         btn_Delete = new javax.swing.JButton();
+        btn_Reviews = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -64,11 +65,20 @@ public class PatientForm extends javax.swing.JFrame {
             }
         });
 
+        btn_Delete.setBackground(new java.awt.Color(255, 51, 51));
         btn_Delete.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Delete.setText("Request Account Deletion");
         btn_Delete.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_DeleteActionPerformed(evt);
+            }
+        });
+
+        btn_Reviews.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_Reviews.setText("Doctor Reviews");
+        btn_Reviews.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ReviewsActionPerformed(evt);
             }
         });
 
@@ -78,10 +88,11 @@ public class PatientForm extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(btn_LogOut)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_Delete)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_Reviews)
+                    .addComponent(btn_LogOut)
+                    .addComponent(btn_Delete))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 113, Short.MAX_VALUE)
                 .addComponent(lst_Noti, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
         );
@@ -90,12 +101,14 @@ public class PatientForm extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
+                    .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 341, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btn_Delete)
-                            .addComponent(btn_LogOut))))
+                        .addComponent(btn_Reviews)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_LogOut)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_Delete)))
                 .addContainerGap())
         );
 
@@ -105,11 +118,11 @@ public class PatientForm extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 852, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 513, Short.MAX_VALUE)
+            .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 391, Short.MAX_VALUE)
         );
 
         pack();
@@ -126,6 +139,12 @@ public class PatientForm extends javax.swing.JFrame {
         controller.RequestTermination();
         getNotifications();
     }//GEN-LAST:event_btn_DeleteActionPerformed
+
+    private void btn_ReviewsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ReviewsActionPerformed
+        // TODO add your handling code here:
+        DoctorRatings form = new DoctorRatings();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_ReviewsActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +184,7 @@ public class PatientForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_Delete;
     private javax.swing.JButton btn_LogOut;
+    private javax.swing.JButton btn_Reviews;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JScrollPane lst_Noti;
