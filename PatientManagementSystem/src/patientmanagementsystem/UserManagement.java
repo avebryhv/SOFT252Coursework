@@ -126,6 +126,15 @@ public class UserManagement {
         System.out.println(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval");
     }
     
+    public void RequestTermination(User p)
+    {
+        for (int i = 0; i < UserCount(); i++) {
+            if (userList.get(i).getId().charAt(0) == 'S') {
+                userList.get(i).AddNotification(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") has requested termination");
+            }
+        }
+    }
+    
     public Boolean ApproveAccount(String ID)
     {
         for (int i = 0; i < waitingApproval.size(); i++) {
@@ -133,6 +142,11 @@ public class UserManagement {
                 waitingApproval.get(i).setApprovedAccount(true);
                 waitingApproval.remove(waitingApproval.get(i));
                 System.out.println(ID + " approved");
+                for (int j = 0; j < UserCount(); j++) {
+                    if (userList.get(j).getId().charAt(0) == 'S') {
+                    userList.get(j).AddNotification(getUserByID(ID).getGivenName() + " " + getUserByID(ID).getSurName() + "(" + getUserByID(ID).getId() + ") has been approved");
+                    }
+                }
                 return true;
             }
         }   
@@ -147,6 +161,12 @@ public class UserManagement {
             }
         }
         return false;
+    }
+    
+    public void RemoveUser(String ID)
+    {
+        userList.remove(getUserByID(ID));
+        System.out.println(ID + " removed");
     }
     
     

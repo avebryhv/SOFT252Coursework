@@ -7,6 +7,7 @@ package Controller;
 
 import GUI.CreateAccount;
 import GUI.MainGUI;
+import GUI.PatientForm;
 import GUI.SecretaryForm;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
@@ -39,6 +40,10 @@ public class Controller {
                         secForm.setVisible(true);
                         return true;
                         
+                    case 'P':
+                        PatientForm patForm = new PatientForm();
+                        patForm.setVisible(true);
+                        return true;
                     default:
                         break;
                 }
@@ -92,5 +97,12 @@ public class Controller {
         {
             JOptionPane.showMessageDialog(null, "Account Not Found");
         }
+    }
+    
+    public void RequestTermination()
+    {
+        userManager.RequestTermination(userManager.getCurrentUser());
+        JOptionPane.showMessageDialog(null, "Account Termination Requested");
+        userManager.getCurrentUser().AddNotification("Account Termination Requested");
     }
 }

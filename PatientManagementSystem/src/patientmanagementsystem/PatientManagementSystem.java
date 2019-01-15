@@ -25,6 +25,7 @@ public class PatientManagementSystem {
             System.out.println("logged in");
             userManager.CreateSecretary("pass", "Dongus", "Kongus", "STRONG dong lane");
             userManager.CreatePatient("Male", 3, "pass2", "yeet", "beat", "meme land");
+            userManager.ApproveAccount("P0002");
         }
         userManager.LogOut();
         MainGUI initialForm = new MainGUI();
