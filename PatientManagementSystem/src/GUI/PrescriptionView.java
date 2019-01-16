@@ -17,13 +17,13 @@ public class PrescriptionView extends javax.swing.JFrame {
 
     
     Controller controller = new Controller();
-    Prescription prescription;
+    Prescription p;
     /**
      * Creates new form PrescriptionView
      */
     public PrescriptionView() {
         initComponents();
-        prescription = p;
+        p = controller.GetCurrentAppointment().getPrescription();
         System.out.println(p.getNotes());
         SetValues(p);
     }

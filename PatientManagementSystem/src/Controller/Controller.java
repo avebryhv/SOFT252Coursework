@@ -312,6 +312,20 @@ public class Controller {
         JOptionPane.showMessageDialog(null, "Prescription Added to " + p.getGivenName());
     }
     
+    public void SetCurrentAppointment(Appointment a)
+    {
+        appointmentManager = AppointmentManager.getInstance();
+        appointmentManager.setCurrentAppointment(a);
+        System.out.println("Set current appointment" + a.getTime());
+    }
+    
+    public Appointment GetCurrentAppointment()
+    {
+        appointmentManager = AppointmentManager.getInstance();
+        System.out.println("Get current appointment" + appointmentManager.getCurrentAppointment().getTime());
+        return appointmentManager.getCurrentAppointment();
+        
+    }
     
     
 }

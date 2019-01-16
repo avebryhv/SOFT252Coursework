@@ -74,6 +74,14 @@ public class AppointmentManager {
             }
         }
     }
+
+    public Appointment getCurrentAppointment() {
+        return currentAppointment;
+    }
+
+    public void setCurrentAppointment(Appointment currentAppointment) {
+        this.currentAppointment = currentAppointment;
+    }
     
     
     
