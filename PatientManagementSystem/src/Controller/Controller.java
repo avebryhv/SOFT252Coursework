@@ -309,6 +309,8 @@ public class Controller {
         userManager = UserManagement.getInstance();
         Prescription temp = new Prescription(p, d, notes, m, quantity, dosage);
         p.addPrescription(temp);
+        appointmentManager = AppointmentManager.getInstance();
+        appointmentManager.getCurrentAppointment().setPrescription(temp);
         JOptionPane.showMessageDialog(null, "Prescription Added to " + p.getGivenName());
     }
     
@@ -327,5 +329,12 @@ public class Controller {
         
     }
     
+    public void CreateMedicine(String name)
+    {
+        userManager = UserManagement.getInstance();
+        medicineManager = MedicineManager.getInstance();
+        medicineManager.CreateMedicine(name, 0);
+        userManager.NotifySecretary("New medicine " + name + " has been added");
+    }
     
 }
