@@ -7,7 +7,10 @@ package GUI;
 
 import Controller.Controller;
 import java.util.ArrayList;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.DefaultListModel;
+import patientmanagementsystem.Appointment;
+import patientmanagementsystem.Doctor;
 
 /**
  *
@@ -17,6 +20,7 @@ public class DoctorForm extends javax.swing.JFrame {
 
     Controller controller = new Controller();
     ArrayList<String> notifications;
+    Appointment currentAppointment;
     
     /**
      * Creates new form DoctorForm
@@ -24,6 +28,8 @@ public class DoctorForm extends javax.swing.JFrame {
     public DoctorForm() {
         initComponents();
         getNotifications();
+        SetupAppointments();
+        SelectAppointment();
     }
     
     private void getNotifications()
@@ -34,6 +40,33 @@ public class DoctorForm extends javax.swing.JFrame {
             model.addElement(notifications.get(i));
         }
         lst_noti.setModel(model);
+    }
+    
+    private void SelectAppointment()
+    {
+        ArrayList<Appointment> a = controller.GetAppointments((Doctor)controller.getCurrentUser());
+        String name = a.get(cmb_Appointments.getSelectedIndex()).getPatient().getGivenName() + " " + a.get(cmb_Appointments.getSelectedIndex()).getPatient().getSurName();
+        lblPatient.setText(name);
+        
+        currentAppointment = a.get(cmb_Appointments.getSelectedIndex());
+        txt_Notes.setText(currentAppointment.getNotes());
+    }
+    
+    private void SetupAppointments()
+    {
+        ArrayList<Appointment> a = controller.GetAppointments((Doctor)controller.getCurrentUser());
+        DefaultComboBoxModel model = new DefaultComboBoxModel();        
+        for (int i = 0; i < a.size(); i++) {
+            model.addElement(a.get(i).getTime());
+        }
+        cmb_Appointments.setModel(model);
+        
+        ArrayList<String> names = controller.getMedicineNames();
+        DefaultComboBoxModel mediModel = new DefaultComboBoxModel();        
+        for (int i = 0; i < names.size(); i++) {
+            mediModel.addElement(names.get(i));
+        }
+        cmb_Medicine.setModel(mediModel);
     }
 
     /**
@@ -64,6 +97,7 @@ public class DoctorForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         spn_Quantity = new javax.swing.JSpinner();
         btn_Prescribe = new javax.swing.JButton();
+        btn_Appointment = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -106,6 +140,11 @@ public class DoctorForm extends javax.swing.JFrame {
         jLabel1.setText("Select Appointment:");
 
         cmb_Appointments.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        cmb_Appointments.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmb_AppointmentsActionPerformed(evt);
+            }
+        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel2.setText("Patient:");
@@ -122,6 +161,11 @@ public class DoctorForm extends javax.swing.JFrame {
 
         btn_AddNote.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_AddNote.setText("Add Note");
+        btn_AddNote.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AddNoteActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         jLabel4.setText("Medicine:");
@@ -136,6 +180,14 @@ public class DoctorForm extends javax.swing.JFrame {
 
         btn_Prescribe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Prescribe.setText("Create Prescription");
+
+        btn_Appointment.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_Appointment.setText("Create New Appointment");
+        btn_Appointment.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_AppointmentActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -166,7 +218,8 @@ public class DoctorForm extends javax.swing.JFrame {
                                 .addComponent(jLabel5)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addComponent(spn_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btn_Prescribe))
+                            .addComponent(btn_Prescribe)
+                            .addComponent(btn_Appointment))
                         .addGap(0, 193, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -195,7 +248,9 @@ public class DoctorForm extends javax.swing.JFrame {
                     .addComponent(spn_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(btn_Prescribe)
-                .addContainerGap(141, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_Appointment)
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Appointment View", jPanel2);
@@ -219,6 +274,22 @@ public class DoctorForm extends javax.swing.JFrame {
         controller.LogOut();
         this.setVisible(false);
     }//GEN-LAST:event_btn_LogOutActionPerformed
+
+    private void btn_AddNoteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AddNoteActionPerformed
+        // TODO add your handling code here:
+        controller.AddNote(currentAppointment, txt_Notes.getText());
+    }//GEN-LAST:event_btn_AddNoteActionPerformed
+
+    private void cmb_AppointmentsActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmb_AppointmentsActionPerformed
+        // TODO add your handling code here:
+        SelectAppointment();
+    }//GEN-LAST:event_cmb_AppointmentsActionPerformed
+
+    private void btn_AppointmentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_AppointmentActionPerformed
+        // TODO add your handling code here:
+        CreateAppointment form = new CreateAppointment();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_AppointmentActionPerformed
 
     /**
      * @param args the command line arguments
@@ -257,6 +328,7 @@ public class DoctorForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_AddNote;
+    private javax.swing.JButton btn_Appointment;
     private javax.swing.JButton btn_LogOut;
     private javax.swing.JButton btn_Prescribe;
     private javax.swing.JComboBox<String> cmb_Appointments;

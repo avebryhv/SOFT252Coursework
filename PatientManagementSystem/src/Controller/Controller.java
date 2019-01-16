@@ -14,6 +14,7 @@ import GUI.PatientForm;
 import GUI.SecretaryForm;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import patientmanagementsystem.Appointment;
 import patientmanagementsystem.AppointmentManager;
 import patientmanagementsystem.Doctor;
 import patientmanagementsystem.MedicineManager;
@@ -263,6 +264,16 @@ public class Controller {
         userManager.NotifySecretary(note);
     }
     
+    public ArrayList<Appointment> GetAppointments(Patient u)
+    {
+        return u.getAppointmentList();
+    }
+    
+    public ArrayList<Appointment> GetAppointments(Doctor u)
+    {
+        return u.getAppointmentList();
+    }
+    
     public ArrayList<String> getMedicineNames()
     {
         medicineManager = MedicineManager.getInstance();
@@ -285,6 +296,16 @@ public class Controller {
     {
         medicineManager = MedicineManager.getInstance();
         medicineManager.HandOut(name, quantity);
+    }
+    
+    public void AddNote(Appointment a, String note)
+    {
+        a.setNotes(note);
+    }
+    
+    public void CreatePrescription(Patient p, Doctor d, String notes, String m, Integer quantity, String dosage)
+    {
+        
     }
     
 }

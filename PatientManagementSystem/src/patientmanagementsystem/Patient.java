@@ -17,6 +17,7 @@ public class Patient extends User{
     private int age;
     private Boolean approvedAccount;
     private ArrayList<Appointment> appointmentList;
+    private ArrayList<Prescription> prescriptionList;
 
     public Patient(String gender, int age, String id, String password, String givenName, String surName, String address) {
         super(id, password, givenName, surName, address);
@@ -24,6 +25,7 @@ public class Patient extends User{
         this.age = age;
         approvedAccount = false;
         appointmentList = new ArrayList<Appointment>();
+        prescriptionList = new ArrayList<Prescription>();
     }
 
     public Boolean getApprovedAccount() {
@@ -41,6 +43,23 @@ public class Patient extends User{
     public void AddAppointment(Appointment a)
     {
         appointmentList.add(a);
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public int getAge() {
+        return age;
+    }
+
+    public ArrayList<Prescription> getPrescriptionList() {
+        return prescriptionList;
+    }
+    
+    public void addPrescription(Prescription p)
+    {
+        prescriptionList.add(p);
     }
 
     
