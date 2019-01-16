@@ -45,11 +45,14 @@ public class DoctorForm extends javax.swing.JFrame {
     private void SelectAppointment()
     {
         ArrayList<Appointment> a = controller.GetAppointments((Doctor)controller.getCurrentUser());
-        String name = a.get(cmb_Appointments.getSelectedIndex()).getPatient().getGivenName() + " " + a.get(cmb_Appointments.getSelectedIndex()).getPatient().getSurName();
-        lblPatient.setText(name);
+        if (a.size() > 0) {
+            String name = a.get(cmb_Appointments.getSelectedIndex()).getPatient().getGivenName() + " " + a.get(cmb_Appointments.getSelectedIndex()).getPatient().getSurName();
+            lblPatient.setText(name);
         
-        currentAppointment = a.get(cmb_Appointments.getSelectedIndex());
-        txt_Notes.setText(currentAppointment.getNotes());
+            currentAppointment = a.get(cmb_Appointments.getSelectedIndex());
+            txt_Notes.setText(currentAppointment.getNotes());
+        }
+        
     }
     
     private void SetupAppointments()
