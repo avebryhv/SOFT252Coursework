@@ -19,6 +19,15 @@ public class Prescription {
     private ArrayList<String> dosageList;
     private String notes;
 
+    /**
+     *
+     * @param patient
+     * @param doctor
+     * @param note
+     * @param m
+     * @param quantity
+     * @param dosage
+     */
     public Prescription(Patient patient, Doctor doctor,String note, String m, Integer quantity, String dosage) {
         this.patient = patient;
         this.doctor = doctor;
@@ -31,6 +40,12 @@ public class Prescription {
         notes = note;
     }
     
+    /**
+     *
+     * @param m
+     * @param q
+     * @param d
+     */
     public void AddMedicine(String m, Integer q, String d)
     {
         medicineList.add(m);
@@ -38,24 +53,52 @@ public class Prescription {
         dosageList.add(d);
     }
 
+    /**
+     *
+     * @return
+     */
     public Patient getPatient() {
         return patient;
     }
 
+    /**
+     *
+     * @return
+     */
     public Doctor getDoctor() {
         return doctor;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getMedicineList() {
         return medicineList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> getQuantities() {
         return quantities;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getDosage() {
         return dosageList;
+    }
+
+    public ArrayList<String> getDosageList() {
+        return dosageList;
+    }
+
+    public String getNotes() {
+        return notes;
     }
     
     

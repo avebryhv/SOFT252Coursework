@@ -13,11 +13,27 @@ import java.util.ArrayList;
  */
 public class Admin extends User{
     UserManagement userManager;
+
+    /**
+     *
+     * @param id
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public Admin(String id, String password, String givenName, String surName, String address) {
         super(id, password, givenName, surName, address);
         userManager = UserManagement.getInstance();
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateSecretary(String password, String givenName, String surName, String address)
     {
         userManager.CreateSecretary(password, givenName, surName, address);

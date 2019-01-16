@@ -19,10 +19,17 @@ public class AppointmentManager {
     private Appointment currentAppointment;
     UserManagement userManager;
     
+    /**
+     *
+     */
     public AppointmentManager() {
         appointmentList = new ArrayList<Appointment>();
     }
     
+    /**
+     *
+     * @return
+     */
     public static AppointmentManager getInstance()
     {
         if (uniqueInstance == null){      
@@ -31,11 +38,21 @@ public class AppointmentManager {
    	return uniqueInstance;
     }
     
+    /**
+     *
+     * @param a
+     */
     public void AddAppointment(Appointment a)
     {
         appointmentList.add(a);
     }
     
+    /**
+     *
+     * @param d
+     * @param p
+     * @param time
+     */
     public void CreateAppointment(Doctor d, Patient p, String time)
     {
         Appointment a = new Appointment(d, p, time);

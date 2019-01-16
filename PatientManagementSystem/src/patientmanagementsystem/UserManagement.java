@@ -18,11 +18,18 @@ public class UserManagement {
     private ArrayList<Patient> waitingApproval;
     private User currentUser;
 
+    /**
+     *
+     */
     public UserManagement() {
         userList = new ArrayList<User>();
         waitingApproval = new ArrayList<Patient>();
     }
     
+    /**
+     *
+     * @return
+     */
     public static UserManagement getInstance()
     {
         if (uniqueInstance == null){      
@@ -31,17 +38,34 @@ public class UserManagement {
    	return uniqueInstance;
     }
     
+    /**
+     *
+     * @return
+     */
     public int UserCount()
     {
         return userList.size();
     }
     
+    /**
+     *
+     * @param u
+     */
     public void AddUser(User u)
     {
         userList.add(u);
         System.out.println(u.getGivenName() + " " + u.getSurName() + " added");
     }
     
+    /**
+     *
+     * @param gender
+     * @param age
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreatePatient(String gender, int age, String password, String givenName, String surName, String address)
     {
         String newID = "P" + String.format("%04d",UserCount());
@@ -57,6 +81,13 @@ public class UserManagement {
                 }
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateDoctor(String password, String givenName, String surName, String address)
     {
         String newID = "D" + String.format("%04d",UserCount());
@@ -70,6 +101,13 @@ public class UserManagement {
                 }
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateAdmin(String password, String givenName, String surName, String address)
     {
         String newID = "A" + String.format("%04d", UserCount());
@@ -83,6 +121,13 @@ public class UserManagement {
                 }
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateSecretary(String password, String givenName, String surName, String address)
     {
         String newID = "S" + String.format("%04d",UserCount());
@@ -96,6 +141,10 @@ public class UserManagement {
                 }
     }
     
+    /**
+     *
+     * @param i
+     */
     public void RemoveID(String i)
     {
         String num = i.substring(1);
@@ -103,6 +152,12 @@ public class UserManagement {
         userList.remove(toRemove);
     }
     
+    /**
+     *
+     * @param userID
+     * @param userPass
+     * @return
+     */
     public Boolean LogIn(String userID, String userPass)
     {
         Boolean canLogIn = false;
@@ -116,15 +171,27 @@ public class UserManagement {
         return canLogIn;
     }
     
+    /**
+     *
+     */
     public void LogOut()
     {
         currentUser = null;
     }
 
+    /**
+     *
+     * @return
+     */
     public User getCurrentUser() {
         return currentUser;
     }
     
+    /**
+     *
+     * @param toGet
+     * @return
+     */
     public User getUserByID(String toGet)
     {
         for (int i = 0; i < UserCount(); i++) {
@@ -143,12 +210,21 @@ public class UserManagement {
         System.out.println(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval");
     }
     
+    /**
+     *
+     * @param p
+     */
     public void RequestTermination(User p)
     {
         String note = p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") has requested termination";
         NotifySecretary(note);
     }
     
+    /**
+     *
+     * @param ID
+     * @return
+     */
     public Boolean ApproveAccount(String ID)
     {
         for (int i = 0; i < waitingApproval.size(); i++) {
@@ -164,6 +240,11 @@ public class UserManagement {
         return false;
     }
     
+    /**
+     *
+     * @param ID
+     * @return
+     */
     public Boolean CheckApproved(String ID)
     {
         for (int i = 0; i < waitingApproval.size(); i++) {
@@ -174,12 +255,20 @@ public class UserManagement {
         return false;
     }
     
+    /**
+     *
+     * @param ID
+     */
     public void RemoveUser(String ID)
     {
         userList.remove(getUserByID(ID));
         System.out.println(ID + " removed");
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Doctor> GetDoctors()
     {
         ArrayList<Doctor> list = new ArrayList<Doctor>();
@@ -192,6 +281,10 @@ public class UserManagement {
         
     }    
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Patient> GetPatients()
     {
         ArrayList<Patient> list = new ArrayList<Patient>();
@@ -204,6 +297,10 @@ public class UserManagement {
         
     }    
     
+    /**
+     *
+     * @param note
+     */
     public void NotifySecretary(String note)
     {
         for (int i = 0; i < UserCount(); i++) {

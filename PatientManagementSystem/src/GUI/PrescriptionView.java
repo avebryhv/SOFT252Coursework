@@ -5,17 +5,47 @@
  */
 package GUI;
 
+import Controller.Controller;
+import javax.swing.DefaultListModel;
+import patientmanagementsystem.Prescription;
+
 /**
  *
  * @author ahoughton-vowles
  */
 public class PrescriptionView extends javax.swing.JFrame {
 
+    
+    Controller controller = new Controller();
+    Prescription prescription;
     /**
      * Creates new form PrescriptionView
      */
-    public PrescriptionView() {
+    public PrescriptionView(Prescription p) {
         initComponents();
+        prescription = p;
+    }
+    
+    public void SetValues(Prescription p)
+    {
+        lblPatName.setText(p.getPatient().getGivenName() + " " + p.getPatient().getSurName());
+        lblPatAdd.setText(p.getPatient().getAddress());
+        lblSex.setText(p.getPatient().getGender());
+        int ageString = p.getPatient().getAge();       
+        lblAge.setText(Integer.toString(ageString));
+        lblDocName.setText(p.getDoctor().getGivenName() + " " + p.getDoctor().getSurName());
+        lblDocAdd.setText(p.getDoctor().getAddress());
+        
+        txtNotes.setText(p.getNotes());
+        
+        DefaultListModel model = new DefaultListModel();        
+        for (int i = 0; i < p.getMedicineList().size(); i++) {
+            String text = p.getMedicineList().get(i) + ", Quantity x" + p.getQuantities().get(i).toString() + ", Dosage: " + p.getDosageList().get(i);
+            model.addElement(text);
+        }
+        lstPrescription.setModel(model);
+        
+        
     }
 
     /**
@@ -27,21 +57,138 @@ public class PrescriptionView extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        label1 = new java.awt.Label();
+        label2 = new java.awt.Label();
+        lblPatName = new javax.swing.JLabel();
+        lblPatAdd = new javax.swing.JLabel();
+        lblSex = new javax.swing.JLabel();
+        lblAge = new javax.swing.JLabel();
+        lblDocName = new javax.swing.JLabel();
+        lblDocAdd = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        txtNotes = new javax.swing.JTextArea();
+        jLabel2 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        lstPrescription = new javax.swing.JList<>();
+        btn_Exit = new javax.swing.JButton();
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        label1.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label1.setText("Patient");
+
+        label2.setFont(new java.awt.Font("Dialog", 0, 18)); // NOI18N
+        label2.setText("Doctor");
+
+        lblPatName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPatName.setText("Name:");
+
+        lblPatAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblPatAdd.setText("Address:");
+
+        lblSex.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblSex.setText("Sex:");
+
+        lblAge.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblAge.setText("Age:");
+
+        lblDocName.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDocName.setText("Name:");
+
+        lblDocAdd.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        lblDocAdd.setText("Address:");
+
+        jLabel1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel1.setText("Notes");
+
+        txtNotes.setEditable(false);
+        txtNotes.setColumns(20);
+        txtNotes.setRows(5);
+        jScrollPane1.setViewportView(txtNotes);
+
+        jLabel2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel2.setText("Prescription");
+
+        jScrollPane2.setViewportView(lstPrescription);
+
+        btn_Exit.setText("Close");
+        btn_Exit.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_ExitActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 688, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
+                    .addComponent(jScrollPane2)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(lblPatName)
+                                    .addComponent(lblPatAdd)
+                                    .addComponent(lblSex)
+                                    .addComponent(lblAge))
+                                .addGap(256, 256, 256)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(lblDocName)
+                                    .addComponent(lblDocAdd)
+                                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                            .addComponent(jLabel1)
+                            .addComponent(jLabel2)
+                            .addComponent(btn_Exit))
+                        .addGap(0, 295, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 404, Short.MAX_VALUE)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(label2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(label1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblPatName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblPatAdd)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblSex)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblAge))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lblDocName)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(lblDocAdd)))
+                .addGap(18, 18, 18)
+                .addComponent(jLabel1)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 8, Short.MAX_VALUE)
+                .addComponent(btn_Exit)
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btn_ExitActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_ExitActionPerformed
+        // TODO add your handling code here:
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_ExitActionPerformed
 
     /**
      * @param args the command line arguments
@@ -73,11 +220,26 @@ public class PrescriptionView extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PrescriptionView().setVisible(true);
+                
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_Exit;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
+    private java.awt.Label label1;
+    private java.awt.Label label2;
+    private javax.swing.JLabel lblAge;
+    private javax.swing.JLabel lblDocAdd;
+    private javax.swing.JLabel lblDocName;
+    private javax.swing.JLabel lblPatAdd;
+    private javax.swing.JLabel lblPatName;
+    private javax.swing.JLabel lblSex;
+    private javax.swing.JList<String> lstPrescription;
+    private javax.swing.JTextArea txtNotes;
     // End of variables declaration//GEN-END:variables
 }

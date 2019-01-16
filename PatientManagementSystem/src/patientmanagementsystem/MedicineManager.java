@@ -17,10 +17,17 @@ public class MedicineManager {
     private static MedicineManager uniqueInstance = null;
     private ArrayList<Medicine> medicineList;
 
+    /**
+     *
+     */
     public MedicineManager() {
         medicineList = new ArrayList<Medicine>();
     }
     
+    /**
+     *
+     * @return
+     */
     public static MedicineManager getInstance()
     {
         if (uniqueInstance == null){      
@@ -29,6 +36,11 @@ public class MedicineManager {
    	return uniqueInstance;
     }
     
+    /**
+     *
+     * @param name
+     * @param quantity
+     */
     public void CreateMedicine(String name, int quantity)
     {
         int id = medicineList.size();
@@ -36,11 +48,20 @@ public class MedicineManager {
         AddMedicine(m);
     }
     
+    /**
+     *
+     * @param m
+     */
     public void AddMedicine(Medicine m)
     {
         medicineList.add(m);
     }
     
+    /**
+     *
+     * @param name
+     * @param quantity
+     */
     public void HandOut(String name, int quantity)
     {
         for (int i = 0; i < medicineList.size(); i++) {
@@ -60,6 +81,11 @@ public class MedicineManager {
         }
     }
     
+    /**
+     *
+     * @param name
+     * @param quantity
+     */
     public void Restock(String name, int quantity)
     {
         for (int i = 0; i < medicineList.size(); i++) {
@@ -71,6 +97,10 @@ public class MedicineManager {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getNames()
     {
         ArrayList<String> list = new ArrayList<String>();
@@ -80,6 +110,10 @@ public class MedicineManager {
         return list;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> getStock()
     {
         ArrayList<Integer> list = new ArrayList<Integer>();
