@@ -9,7 +9,7 @@ import GUI.MainGUI;
 import Serialiser.Serialiser;
 
 /**
- *
+ *Main Method
  * @author ahoughton-vowles
  */
 public class PatientManagementSystem {

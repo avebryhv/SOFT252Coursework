@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Singleton to store medicine details
  * @author Avebry
  */
 public class MedicineManager {
@@ -58,9 +58,9 @@ public class MedicineManager {
     }
     
     /**
-     *
-     * @param name
-     * @param quantity
+     *Depletes stock
+     * @param name Name of medicine to hand out
+     * @param quantity Amount of medicine to use
      */
     public void HandOut(String name, int quantity)
     {
@@ -82,9 +82,9 @@ public class MedicineManager {
     }
     
     /**
-     *
-     * @param name
-     * @param quantity
+     *Replenishes stock
+     * @param name Name of medicine
+     * @param quantity Amount to order
      */
     public void Restock(String name, int quantity)
     {
@@ -98,8 +98,8 @@ public class MedicineManager {
     }
     
     /**
-     *
-     * @return
+     *Returns list of all medicines
+     * @return String List of medicine names
      */
     public ArrayList<String> getNames()
     {
@@ -111,8 +111,8 @@ public class MedicineManager {
     }
     
     /**
-     *
-     * @return
+     *Returns the amount of stock of a given medicine
+     * @return Integer stock remaining
      */
     public ArrayList<Integer> getStock()
     {

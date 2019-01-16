@@ -8,7 +8,7 @@ package patientmanagementsystem;
 import java.util.Date;
 
 /**
- *
+ *Appointments between patients and doctors
  * @author Avebry
  */
 public class Appointment {

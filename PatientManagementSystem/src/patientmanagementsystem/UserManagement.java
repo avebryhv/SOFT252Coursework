@@ -11,7 +11,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
 /**
- *
+ *Singleton class to store user details
  * @author Avebry
  */
 public class UserManagement implements Serializable{

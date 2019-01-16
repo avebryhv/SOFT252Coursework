@@ -24,7 +24,7 @@ import patientmanagementsystem.User;
 import patientmanagementsystem.UserManagement;
 
 /**
- *
+ *Controller for MVC
  * @author ahoughton-vowles
  */
 public class Controller {   

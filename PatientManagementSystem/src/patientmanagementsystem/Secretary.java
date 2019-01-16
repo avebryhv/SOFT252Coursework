@@ -8,7 +8,7 @@ package patientmanagementsystem;
 import java.util.ArrayList;
 
 /**
- *
+ *Secretaries
  * @author Avebry
  */
 public class Secretary extends User{

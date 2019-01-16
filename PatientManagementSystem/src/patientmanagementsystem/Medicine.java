@@ -6,7 +6,7 @@
 package patientmanagementsystem;
 
 /**
- *
+ *Medicine
  * @author Avebry
  */
 public class Medicine {

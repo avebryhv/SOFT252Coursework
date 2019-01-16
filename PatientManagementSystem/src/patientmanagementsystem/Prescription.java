@@ -8,7 +8,7 @@ package patientmanagementsystem;
 import java.util.ArrayList;
 
 /**
- *
+ *Prescriptions
  * @author Avebry
  */
 public class Prescription {

@@ -8,7 +8,7 @@ package patientmanagementsystem;
 import java.util.ArrayList;
 
 /**
- *
+ *System Admins
  * @author Avebry
  */
 public class Admin extends User{

@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 /**
- *
+ *Singleton class to store appointment details
  * @author Avebry
  */
 public class AppointmentManager {
@@ -48,10 +48,10 @@ public class AppointmentManager {
     }
     
     /**
-     *
-     * @param d
-     * @param p
-     * @param time
+     *Creates a new appointment
+     * @param d Doctor
+     * @param p Patient
+     * @param time String date of appointment
      */
     public void CreateAppointment(Doctor d, Patient p, String time)
     {

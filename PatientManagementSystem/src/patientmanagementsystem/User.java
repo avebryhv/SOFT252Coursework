@@ -8,7 +8,7 @@ package patientmanagementsystem;
 import java.util.ArrayList;
 
 /**
- *
+ *Abstract class for generic users
  * @author Avebry
  */
 public abstract class User {
