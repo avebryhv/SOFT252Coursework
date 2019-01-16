@@ -137,22 +137,16 @@ public class UserManagement {
     
     private void AddToApproval(Patient p)
     {
-        waitingApproval.add(p);        
-        for (int i = 0; i < UserCount(); i++) {
-            if (userList.get(i).getId().charAt(0) == 'S') {
-                userList.get(i).AddNotification(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval");
-            }
-        }
+        waitingApproval.add(p); 
+        String note = p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval";
+        NotifySecretary(note);
         System.out.println(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") is waiting for approval");
     }
     
     public void RequestTermination(User p)
     {
-        for (int i = 0; i < UserCount(); i++) {
-            if (userList.get(i).getId().charAt(0) == 'S') {
-                userList.get(i).AddNotification(p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") has requested termination");
-            }
-        }
+        String note = p.getGivenName() + " " + p.getSurName() + "(" + p.getId() + ") has requested termination";
+        NotifySecretary(note);
     }
     
     public Boolean ApproveAccount(String ID)
@@ -162,11 +156,8 @@ public class UserManagement {
                 waitingApproval.get(i).setApprovedAccount(true);
                 waitingApproval.remove(waitingApproval.get(i));
                 System.out.println(ID + " approved");
-                for (int j = 0; j < UserCount(); j++) {
-                    if (userList.get(j).getId().charAt(0) == 'S') {
-                    userList.get(j).AddNotification(getUserByID(ID).getGivenName() + " " + getUserByID(ID).getSurName() + "(" + getUserByID(ID).getId() + ") has been approved");
-                    }
-                }
+                String note = getUserByID(ID).getGivenName() + " " + getUserByID(ID).getSurName() + "(" + getUserByID(ID).getId() + ") has been approved";
+                NotifySecretary(note);
                 return true;
             }
         }   
@@ -201,4 +192,24 @@ public class UserManagement {
         
     }    
     
+    public ArrayList<Patient> GetPatients()
+    {
+        ArrayList<Patient> list = new ArrayList<Patient>();
+        for (int i = 0; i < UserCount(); i++) {
+            if (userList.get(i).getId().charAt(0) == 'P') {
+                list.add((Patient)userList.get(i));
+            }
+        }
+        return list;      
+        
+    }    
+    
+    public void NotifySecretary(String note)
+    {
+        for (int i = 0; i < UserCount(); i++) {
+            if (userList.get(i).getId().charAt(0) == 'S') {
+                userList.get(i).AddNotification(note);
+            }
+        }
+    }
 }

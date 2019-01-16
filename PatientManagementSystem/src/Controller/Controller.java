@@ -14,7 +14,9 @@ import GUI.PatientForm;
 import GUI.SecretaryForm;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
+import patientmanagementsystem.AppointmentManager;
 import patientmanagementsystem.Doctor;
+import patientmanagementsystem.Patient;
 import patientmanagementsystem.User;
 import patientmanagementsystem.UserManagement;
 
@@ -25,6 +27,7 @@ import patientmanagementsystem.UserManagement;
 public class Controller {   
     
     UserManagement userManager;
+    AppointmentManager appointmentManager;
     
     public Boolean LogIn(String ID, String password)
     {
@@ -168,6 +171,17 @@ public class Controller {
         return list;
     }
     
+    public ArrayList<String> GetPatientNames()
+    {
+        userManager = UserManagement.getInstance();
+        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<Patient> patients = userManager.GetPatients();
+        for (int i = 0; i < patients.size(); i++) {
+            list.add(patients.get(i).getGivenName() + " " + patients.get(i).getSurName());
+        }
+        return list;
+    }
+    
     public ArrayList<String> GetDoctorReviews(String name)
     {
         userManager = UserManagement.getInstance();
@@ -210,6 +224,40 @@ public class Controller {
                 break;
             }
         }
+    }
+    
+    public void CreateAppointment(String pName, String dName, String time)
+    {
+        Doctor d = null;
+        Patient p = null;
+        userManager = UserManagement.getInstance();
+        ArrayList<Doctor> doctors = userManager.GetDoctors();
+        for (int i = 0; i < doctors.size(); i++) {
+            String docName = doctors.get(i).getGivenName() + " " + doctors.get(i).getSurName();
+            if (docName.equals(dName)) {
+                d = doctors.get(i);
+                break;
+            }
+        }
+        ArrayList<Patient> patients = userManager.GetPatients();
+        for (int i = 0; i < patients.size(); i++) {
+            String patName = patients.get(i).getGivenName() + " " + patients.get(i).getSurName();
+            if (patName.equals(pName)) {
+                p = patients.get(i);
+                break;
+            }
+        }
+        appointmentManager = AppointmentManager.getInstance();
+        appointmentManager.CreateAppointment(d, p, time);
+        JOptionPane.showMessageDialog(null, "Appointment Created: " + p.getGivenName() + " " + p.getSurName() + " with " + d.getGivenName() + " " + d.getSurName() + " at " + time);
+        d.AddNotification("Appointment with " + p.getGivenName() + " " + p.getSurName() + " at " + time);
+        p.AddNotification("Appointment granted with " + d.getGivenName() + " " + d.getSurName() + " at " + time);
+    }
+    
+    public void RequestAppointment(String dName, String time)
+    {
+        String note = "Patient " + userManager.getCurrentUser().getGivenName() + " " + userManager.getCurrentUser().getSurName() + " has requested an appointment with " + dName + " at " + time;
+        userManager.NotifySecretary(note);
     }
     
     
