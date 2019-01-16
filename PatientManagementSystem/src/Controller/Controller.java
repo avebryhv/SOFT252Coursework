@@ -33,6 +33,12 @@ public class Controller {
     AppointmentManager appointmentManager;
     MedicineManager medicineManager;
     
+    /**
+     *
+     * @param ID
+     * @param password
+     * @return
+     */
     public Boolean LogIn(String ID, String password)
     {
         userManager = UserManagement.getInstance();
@@ -76,6 +82,15 @@ public class Controller {
         return false;
     }
     
+    /**
+     *
+     * @param gender
+     * @param age
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreatePatientAccount(String gender, Integer age, String password, String givenName, String surName, String address)
     {
         userManager = UserManagement.getInstance();
@@ -83,48 +98,87 @@ public class Controller {
         
     }
     
+    /**
+     *
+     */
     public void ShowCreatePatient()
     {
         CreateAccount form = new CreateAccount();
         form.setVisible(true);
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateSecretaryAccount(String password, String givenName, String surName, String address)
     {
         userManager = UserManagement.getInstance();
         userManager.CreateSecretary(password, givenName, surName, address);
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateDoctorAccount(String password, String givenName, String surName, String address)
     {
         userManager = UserManagement.getInstance();
         userManager.CreateDoctor(password, givenName, surName, address);
     }
     
+    /**
+     *
+     * @param password
+     * @param givenName
+     * @param surName
+     * @param address
+     */
     public void CreateAdminAccount(String password, String givenName, String surName, String address)
     {
         userManager = UserManagement.getInstance();
         userManager.CreateAdmin(password, givenName, surName, address);
     }
     
+    /**
+     *
+     */
     public void ShowStaffCreator()
     {
         CreateStaff form = new CreateStaff();
         form.setVisible(true);
     }
     
+    /**
+     *
+     * @param ID
+     * @return
+     */
     public ArrayList<String> getNotifications(String ID)
     {
         userManager = UserManagement.getInstance();
         return userManager.getCurrentUser().getNotifications();
     }
     
+    /**
+     *
+     * @return
+     */
     public User getCurrentUser()
     {
         userManager = UserManagement.getInstance();
         return userManager.getCurrentUser();
     }
     
+    /**
+     *
+     */
     public void LogOut()
     {
         userManager = UserManagement.getInstance();
@@ -133,6 +187,9 @@ public class Controller {
         newScreen.setVisible(true);
     }
     
+    /**
+     *
+     */
     public void ApproveNewPatient()
     {
         String ID;
@@ -145,6 +202,9 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     */
     public void RequestTermination()
     {
         userManager.RequestTermination(userManager.getCurrentUser());
@@ -152,6 +212,9 @@ public class Controller {
         userManager.getCurrentUser().AddNotification("Account Termination Requested");
     }
     
+    /**
+     *
+     */
     public void DeletePatient()
     {
         String ID;
@@ -164,6 +227,10 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> GetDoctorNames()
     {
         userManager = UserManagement.getInstance();
@@ -175,6 +242,10 @@ public class Controller {
         return list;
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> GetPatientNames()
     {
         userManager = UserManagement.getInstance();
@@ -186,6 +257,11 @@ public class Controller {
         return list;
     }
     
+    /**
+     *
+     * @param name
+     * @return
+     */
     public ArrayList<String> GetDoctorReviews(String name)
     {
         userManager = UserManagement.getInstance();
@@ -202,6 +278,11 @@ public class Controller {
         return list;
     }
     
+    /**
+     *
+     * @param name
+     * @param review
+     */
     public void AddReview(String name, String review)
     {
         userManager = UserManagement.getInstance();
@@ -216,6 +297,11 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     * @param name
+     * @param feedback
+     */
     public void AddFeedback(String name, String feedback)
     {
         userManager = UserManagement.getInstance();
@@ -230,6 +316,12 @@ public class Controller {
         }
     }
     
+    /**
+     *
+     * @param pName
+     * @param dName
+     * @param time
+     */
     public void CreateAppointment(String pName, String dName, String time)
     {
         userManager = UserManagement.getInstance();
@@ -259,51 +351,98 @@ public class Controller {
         p.AddNotification("Appointment granted with " + d.getGivenName() + " " + d.getSurName() + " at " + time);
     }
     
+    /**
+     *
+     * @param dName
+     * @param time
+     */
     public void RequestAppointment(String dName, String time)
     {
         String note = "Patient " + userManager.getCurrentUser().getGivenName() + " " + userManager.getCurrentUser().getSurName() + " has requested an appointment with " + dName + " at " + time;
         userManager.NotifySecretary(note);
     }
     
+    /**
+     *
+     * @param u
+     * @return
+     */
     public ArrayList<Appointment> GetAppointments(Patient u)
     {
         return u.getAppointmentList();
     }
     
+    /**
+     *
+     * @param u
+     * @return
+     */
     public ArrayList<Appointment> GetAppointments(Doctor u)
     {
         return u.getAppointmentList();
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getMedicineNames()
     {
         medicineManager = MedicineManager.getInstance();
         return medicineManager.getNames();        
     }
     
+    /**
+     *
+     * @return
+     */
     public ArrayList<Integer> getMedicineStock()
     {
         medicineManager = MedicineManager.getInstance();
         return medicineManager.getStock();        
     }
     
+    /**
+     *
+     * @param name
+     * @param quantity
+     */
     public void OrderMedicine(String name, int quantity)
     {
         medicineManager = MedicineManager.getInstance();
         medicineManager.Restock(name, quantity);
     }
     
+    /**
+     *
+     * @param name
+     * @param quantity
+     */
     public void UseMedicine(String name, int quantity)
     {
         medicineManager = MedicineManager.getInstance();
         medicineManager.HandOut(name, quantity);
     }
     
+    /**
+     *
+     * @param a
+     * @param note
+     */
     public void AddNote(Appointment a, String note)
     {
         a.setNotes(note);
     }
     
+    /**
+     *
+     * @param p
+     * @param d
+     * @param notes
+     * @param m
+     * @param quantity
+     * @param dosage
+     */
     public void CreatePrescription(Patient p, Doctor d, String notes, String m, Integer quantity, String dosage)
     {
         userManager = UserManagement.getInstance();
@@ -314,6 +453,10 @@ public class Controller {
         JOptionPane.showMessageDialog(null, "Prescription Added to " + p.getGivenName());
     }
     
+    /**
+     *
+     * @param a
+     */
     public void SetCurrentAppointment(Appointment a)
     {
         appointmentManager = AppointmentManager.getInstance();
@@ -321,6 +464,10 @@ public class Controller {
         System.out.println("Set current appointment" + a.getTime());
     }
     
+    /**
+     *
+     * @return
+     */
     public Appointment GetCurrentAppointment()
     {
         appointmentManager = AppointmentManager.getInstance();
@@ -329,6 +476,10 @@ public class Controller {
         
     }
     
+    /**
+     *
+     * @param name
+     */
     public void CreateMedicine(String name)
     {
         userManager = UserManagement.getInstance();

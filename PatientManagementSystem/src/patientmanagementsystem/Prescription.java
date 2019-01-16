@@ -93,10 +93,18 @@ public class Prescription {
         return dosageList;
     }
 
+    /**
+     *
+     * @return
+     */
     public ArrayList<String> getDosageList() {
         return dosageList;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getNotes() {
         return notes;
     }

@@ -337,6 +337,7 @@ public class DoctorForm extends javax.swing.JFrame {
         // TODO add your handling code here:
         String name = JOptionPane.showInputDialog("Please input the name of the new medicine");
         controller.CreateMedicine(name);
+        
     }//GEN-LAST:event_btn_OrderActionPerformed
 
     /**

@@ -75,10 +75,18 @@ public class AppointmentManager {
         }
     }
 
+    /**
+     *
+     * @return
+     */
     public Appointment getCurrentAppointment() {
         return currentAppointment;
     }
 
+    /**
+     *
+     * @param currentAppointment
+     */
     public void setCurrentAppointment(Appointment currentAppointment) {
         this.currentAppointment = currentAppointment;
     }

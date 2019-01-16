@@ -28,6 +28,10 @@ public class PrescriptionView extends javax.swing.JFrame {
         SetValues(p);
     }
     
+    /**
+     *
+     * @param p
+     */
     public void SetValues(Prescription p)
     {
         lblPatName.setText(p.getPatient().getGivenName() + " " + p.getPatient().getSurName());
