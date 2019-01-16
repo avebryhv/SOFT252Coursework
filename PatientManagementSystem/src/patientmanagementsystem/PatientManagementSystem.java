@@ -14,6 +14,7 @@ import Serialiser.Serialiser;
  */
 public class PatientManagementSystem {
 
+    
     /**
      * @param args the command line arguments
      */
@@ -29,25 +30,38 @@ public class PatientManagementSystem {
         }
         //UserManagement userManager = UserManagement.getInstance();
         MedicineManager mediManager = MedicineManager.getInstance();
-        userManager.CreateAdmin("bepis", "Big", "Bepsi", "long dong lane");
-        System.out.println(userManager.UserCount());
-        if (userManager.LogIn("A0000", "bepis")) {            
-            System.out.println("logged in");
-            userManager.CreateSecretary("pass", "Dongus", "Kongus", "STRONG dong lane");
-            userManager.CreatePatient("Male", 3, "pass2", "yeet", "beat", "meme land");
-            userManager.CreateDoctor("pass", "Strong", "Kong", "STRONG dong lane");
-            userManager.CreateDoctor("pass", "Stronger", "Konger", "STRONGer dong lane");
-            userManager.ApproveAccount("P0002");
-        }
-        userManager.LogOut();
-        mediManager.CreateMedicine("BONE HURTING JUICE", 10);
-        mediManager.CreateMedicine("bad succ", 3);
-        mediManager.CreateMedicine("big dick energy", 5);
+        InitialUsers(userManager);
         MainGUI initialForm = new MainGUI();
         initialForm.setVisible(true);
         //User u = userManager.getUserByID("P0");
         
         
+    }
+    
+    private static void InitialUsers(UserManagement m)
+    {
+        m.CreateAdmin("admin", "Kaira", "Warner", "2 Admin Street");
+        m.CreateSecretary("secretary", "Ryder", "Kelley", "88 T Lane");
+        m.CreateDoctor("doctor", "Carlie", "Roman", "44 Doc Street");
+        m.CreateDoctor("password", "Byron", "Cooley", "23 Doc Street");
+        m.CreateDoctor("password", "Daniela", "Sharpe", "77 Doc Street");
+        m.CreatePatient("Male", 34, "patient", "Kurtis", "Dudley", "4 P Street");
+        m.CreatePatient("Male", 25, "pass", "Derrick", "Mathews", "88 P Street");
+        m.CreatePatient("Female", 29, "1234", "Meg", "Key", "4 P Street");
+        m.ApproveAccount("P0005");
+        m.ApproveAccount("P0006");
+        m.ApproveAccount("P0007");
+        MedicineManager med = MedicineManager.getInstance();
+        med.CreateMedicine("Humira", 55);
+        med.CreateMedicine("Avastin", 12);
+        med.CreateMedicine("Enbrel", 88);
+        med.CreateMedicine("Rituxan", 170);
+        med.CreateMedicine("Crestor", 50);
+        med.CreateMedicine("Herceptin", 100);
+        med.CreateMedicine("Remicade", 30);
+        med.CreateMedicine("Lantus", 88);
+        med.CreateMedicine("Advair", 20);
+        med.CreateMedicine("Prolia", 71);
     }
     
 }

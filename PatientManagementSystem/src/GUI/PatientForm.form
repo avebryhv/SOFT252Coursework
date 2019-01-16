@@ -60,22 +60,26 @@
                           <Component id="btn_Delete" alignment="0" min="-2" max="-2" attributes="0"/>
                           <Group type="102" alignment="0" attributes="0">
                               <Component id="btn_RequestAppointment" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="cmb_Doctor" max="32767" attributes="0"/>
-                                  <Component id="txt_Time" max="32767" attributes="0"/>
-                                  <Group type="102" alignment="0" attributes="0">
+                                  <Group type="102" attributes="0">
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" attributes="0">
+                                          <Component id="cmb_Doctor" max="32767" attributes="0"/>
+                                          <Component id="txt_Time" max="32767" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <Group type="102" attributes="0">
                                       <Group type="103" groupAlignment="0" attributes="0">
                                           <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="49" max="-2" attributes="0"/>
-                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                                          </Group>
-                                          <Group type="102" alignment="0" attributes="0">
-                                              <EmptySpace min="-2" pref="51" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                                               <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                                           </Group>
+                                          <Group type="102" alignment="0" attributes="0">
+                                              <EmptySpace min="-2" pref="62" max="-2" attributes="0"/>
+                                              <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
+                                          </Group>
                                       </Group>
-                                      <EmptySpace min="0" pref="128" max="32767" attributes="0"/>
+                                      <EmptySpace min="0" pref="121" max="32767" attributes="0"/>
                                   </Group>
                               </Group>
                           </Group>
@@ -88,32 +92,40 @@
             </DimensionLayout>
             <DimensionLayout dim="1">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Group type="102" alignment="0" attributes="0">
+                  <Group type="102" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="lst_Noti" alignment="0" max="32767" attributes="0"/>
-                          <Group type="102" alignment="1" attributes="0">
-                              <Group type="103" groupAlignment="1" attributes="0">
-                                  <Component id="btn_RequestAppointment" min="-2" pref="86" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace min="0" pref="46" max="32767" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
                                   <Group type="102" attributes="0">
                                       <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="cmb_Doctor" min="-2" max="-2" attributes="0"/>
                                       <EmptySpace max="-2" attributes="0"/>
                                       <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                      <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
-                                      <Component id="txt_Time" min="-2" max="-2" attributes="0"/>
+                                      <EmptySpace max="-2" attributes="0"/>
+                                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                          <Group type="102" attributes="0">
+                                              <EmptySpace min="-2" pref="45" max="-2" attributes="0"/>
+                                              <Component id="btn_Reviews" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                              <Component id="btn_LogOut" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                          </Group>
+                                          <Group type="102" alignment="1" attributes="0">
+                                              <Component id="txt_Time" min="-2" max="-2" attributes="0"/>
+                                              <EmptySpace min="-2" pref="109" max="-2" attributes="0"/>
+                                          </Group>
+                                      </Group>
+                                      <Component id="btn_Delete" min="-2" max="-2" attributes="0"/>
                                   </Group>
+                                  <Component id="btn_RequestAppointment" min="-2" pref="86" max="-2" attributes="0"/>
                               </Group>
-                              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                              <Component id="btn_Reviews" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btn_LogOut" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="btn_Delete" min="-2" max="-2" attributes="0"/>
                           </Group>
+                          <Component id="lst_Noti" max="32767" attributes="0"/>
                       </Group>
-                      <EmptySpace pref="80" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
                   </Group>
               </Group>
             </DimensionLayout>
