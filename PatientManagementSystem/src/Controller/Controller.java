@@ -309,7 +309,9 @@ public class Controller {
         userManager = UserManagement.getInstance();
         Prescription temp = new Prescription(p, d, notes, m, quantity, dosage);
         p.addPrescription(temp);
-        JOptionPane.showMessageDialog(null, "Prescription Added");
+        JOptionPane.showMessageDialog(null, "Prescription Added to " + p.getGivenName());
     }
+    
+    
     
 }

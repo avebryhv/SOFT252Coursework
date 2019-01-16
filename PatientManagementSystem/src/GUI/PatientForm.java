@@ -48,7 +48,9 @@ public class PatientForm extends javax.swing.JFrame {
     
     private void SelectAppointment()
     {
+        
         ArrayList<Appointment> a = controller.GetAppointments((Patient)controller.getCurrentUser());
+        currentAppointment = a.get(cmb_Appointments.getSelectedIndex());
         if (a.size() > 0) {
             String name = a.get(cmb_Appointments.getSelectedIndex()).getDoctor().getGivenName() + " " + a.get(cmb_Appointments.getSelectedIndex()).getDoctor().getSurName();
             lblDoctor.setText(name);
@@ -355,6 +357,8 @@ public class PatientForm extends javax.swing.JFrame {
 
     private void btn_PrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrescribeActionPerformed
         // TODO add your handling code here:
+        PrescriptionView form = new PrescriptionView(currentAppointment.getPrescription());
+        form.setVisible(true);
         
     }//GEN-LAST:event_btn_PrescribeActionPerformed
 

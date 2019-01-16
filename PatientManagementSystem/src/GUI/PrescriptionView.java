@@ -21,9 +21,11 @@ public class PrescriptionView extends javax.swing.JFrame {
     /**
      * Creates new form PrescriptionView
      */
-    public PrescriptionView(Prescription p) {
+    public PrescriptionView() {
         initComponents();
         prescription = p;
+        System.out.println(p.getNotes());
+        SetValues(p);
     }
     
     public void SetValues(Prescription p)
