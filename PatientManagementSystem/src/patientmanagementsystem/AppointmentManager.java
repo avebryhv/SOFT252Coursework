@@ -16,6 +16,8 @@ public class AppointmentManager {
     
     private static AppointmentManager uniqueInstance = null;
     private ArrayList<Appointment> appointmentList;
+    private Appointment currentAppointment;
+    UserManagement userManager;
     
     public AppointmentManager() {
         appointmentList = new ArrayList<Appointment>();
@@ -39,6 +41,21 @@ public class AppointmentManager {
         Appointment a = new Appointment(d, p, time);
         a.setID(appointmentList.size());
         AddAppointment(a);
+        userManager = UserManagement.getInstance();
+        
+        ArrayList<Doctor> doctors = userManager.GetDoctors();
+        for (int i = 0; i < doctors.size(); i++) {
+            if (d.equals(doctors.get(i))) {
+                doctors.get(i).AddAppointment(a);
+            }
+        }
+        
+        ArrayList<Patient> patients = userManager.GetPatients();
+        for (int i = 0; i < patients.size(); i++) {
+            if (p.equals(patients.get(i))) {
+                patients.get(i).AddAppointment(a);
+            }
+        }
     }
     
     

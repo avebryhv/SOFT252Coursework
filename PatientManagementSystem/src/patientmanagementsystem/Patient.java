@@ -23,6 +23,7 @@ public class Patient extends User{
         this.gender = gender;
         this.age = age;
         approvedAccount = false;
+        appointmentList = new ArrayList<Appointment>();
     }
 
     public Boolean getApprovedAccount() {
@@ -31,6 +32,15 @@ public class Patient extends User{
 
     public void setApprovedAccount(Boolean approvedAccount) {
         this.approvedAccount = approvedAccount;
+    }
+
+    public ArrayList<Appointment> getAppointmentList() {
+        return appointmentList;
+    }
+    
+    public void AddAppointment(Appointment a)
+    {
+        appointmentList.add(a);
     }
 
     
