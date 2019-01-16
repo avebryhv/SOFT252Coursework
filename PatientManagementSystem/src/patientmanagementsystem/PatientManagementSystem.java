@@ -19,6 +19,7 @@ public class PatientManagementSystem {
     public static void main(String[] args) {
         // TODO code application logic here
         UserManagement userManager = UserManagement.getInstance();
+        MedicineManager mediManager = MedicineManager.getInstance();
         userManager.CreateAdmin("bepis", "Big", "Bepsi", "long dong lane");
         System.out.println(userManager.UserCount());
         if (userManager.LogIn("A0000", "bepis")) {            
@@ -30,6 +31,9 @@ public class PatientManagementSystem {
             userManager.ApproveAccount("P0002");
         }
         userManager.LogOut();
+        mediManager.CreateMedicine("BONE HURTING JUICE", 10);
+        mediManager.CreateMedicine("bad succ", 3);
+        mediManager.CreateMedicine("big dick energy", 5);
         MainGUI initialForm = new MainGUI();
         initialForm.setVisible(true);
         //User u = userManager.getUserByID("P0");

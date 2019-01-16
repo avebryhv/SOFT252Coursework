@@ -16,6 +16,7 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import patientmanagementsystem.AppointmentManager;
 import patientmanagementsystem.Doctor;
+import patientmanagementsystem.MedicineManager;
 import patientmanagementsystem.Patient;
 import patientmanagementsystem.User;
 import patientmanagementsystem.UserManagement;
@@ -28,6 +29,7 @@ public class Controller {
     
     UserManagement userManager;
     AppointmentManager appointmentManager;
+    MedicineManager medicineManager;
     
     public Boolean LogIn(String ID, String password)
     {
@@ -228,6 +230,7 @@ public class Controller {
     
     public void CreateAppointment(String pName, String dName, String time)
     {
+        userManager = UserManagement.getInstance();
         Doctor d = null;
         Patient p = null;
         userManager = UserManagement.getInstance();
@@ -260,6 +263,28 @@ public class Controller {
         userManager.NotifySecretary(note);
     }
     
+    public ArrayList<String> getMedicineNames()
+    {
+        medicineManager = MedicineManager.getInstance();
+        return medicineManager.getNames();        
+    }
     
+    public ArrayList<Integer> getMedicineStock()
+    {
+        medicineManager = MedicineManager.getInstance();
+        return medicineManager.getStock();        
+    }
+    
+    public void OrderMedicine(String name, int quantity)
+    {
+        medicineManager = MedicineManager.getInstance();
+        medicineManager.Restock(name, quantity);
+    }
+    
+    public void UseMedicine(String name, int quantity)
+    {
+        medicineManager = MedicineManager.getInstance();
+        medicineManager.HandOut(name, quantity);
+    }
     
 }

@@ -53,6 +53,7 @@ public class SecretaryForm extends javax.swing.JFrame {
         btn_ApproveAccount = new javax.swing.JButton();
         btn_Delete = new javax.swing.JButton();
         btn_Appointment = new javax.swing.JButton();
+        btn_Medicine = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -90,6 +91,14 @@ public class SecretaryForm extends javax.swing.JFrame {
             }
         });
 
+        btn_Medicine.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        btn_Medicine.setText("Manage Medicines");
+        btn_Medicine.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_MedicineActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -102,7 +111,8 @@ public class SecretaryForm extends javax.swing.JFrame {
                         .addComponent(btn_ApproveAccount)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btn_Delete))
-                    .addComponent(btn_Appointment))
+                    .addComponent(btn_Appointment)
+                    .addComponent(btn_Medicine))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(lst_Noti, javax.swing.GroupLayout.PREFERRED_SIZE, 258, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
@@ -115,6 +125,8 @@ public class SecretaryForm extends javax.swing.JFrame {
                     .addComponent(lst_Noti, javax.swing.GroupLayout.DEFAULT_SIZE, 450, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(btn_Medicine)
+                        .addGap(27, 27, 27)
                         .addComponent(btn_Appointment)
                         .addGap(18, 18, 18)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -163,6 +175,12 @@ public class SecretaryForm extends javax.swing.JFrame {
         form.setVisible(true);
     }//GEN-LAST:event_btn_AppointmentActionPerformed
 
+    private void btn_MedicineActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_MedicineActionPerformed
+        // TODO add your handling code here:
+        Medicine form = new Medicine();
+        form.setVisible(true);
+    }//GEN-LAST:event_btn_MedicineActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -204,6 +222,7 @@ public class SecretaryForm extends javax.swing.JFrame {
     private javax.swing.JButton btn_ApproveAccount;
     private javax.swing.JButton btn_Delete;
     private javax.swing.JButton btn_LogOut;
+    private javax.swing.JButton btn_Medicine;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JScrollPane lst_Noti;
