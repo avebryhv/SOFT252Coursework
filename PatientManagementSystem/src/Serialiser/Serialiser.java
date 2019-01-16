@@ -19,20 +19,34 @@ import java.io.Serializable;
 public class Serialiser {
     private String name;
 
+    /**
+     *
+     * @param name
+     */
     public Serialiser(String name) {
         this.name = name;
     }
 
+    /**
+     *
+     * @return
+     */
     public String getName() {
         return name;
     }
 
+    /**
+     *
+     * @param name
+     */
     public void setName(String name) {
         this.name = name;
     }
 
-    
-    
+    /**
+     *
+     * @return
+     */
     public Serializable readObject(){
         Serializable loadedObject = null;
         try {
@@ -48,10 +62,15 @@ public class Serialiser {
         } catch (ClassNotFoundException c) {
             System.out.println("Class not found");
             c.printStackTrace();
-        }
+        } 
         return loadedObject;
     }
     
+    /**
+     *
+     * @param object
+     * @return
+     */
     public boolean writeObject(Serializable object){
         try {
             FileOutputStream fileOut = new FileOutputStream(name);

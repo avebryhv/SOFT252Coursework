@@ -34,9 +34,9 @@ public class Controller {
     MedicineManager medicineManager;
     
     /**
-     *
-     * @param ID
-     * @param password
+     *Attempts to log a user in
+     * @param ID input user ID
+     * @param password input user password
      * @return
      */
     public Boolean LogIn(String ID, String password)
@@ -83,13 +83,13 @@ public class Controller {
     }
     
     /**
-     *
-     * @param gender
-     * @param age
-     * @param password
-     * @param givenName
-     * @param surName
-     * @param address
+     *Creates an account for a new patient
+     * @param gender String Patient's gender
+     * @param age Integer Patient's age
+     * @param password String Patient's password
+     * @param givenName String Patients given name
+     * @param surName String Patient's surname
+     * @param address String Patient's address
      */
     public void CreatePatientAccount(String gender, Integer age, String password, String givenName, String surName, String address)
     {
@@ -99,7 +99,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Shows the form to create a new patient
      */
     public void ShowCreatePatient()
     {
@@ -108,7 +108,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Creates an account for a new Secretary
      * @param password
      * @param givenName
      * @param surName
@@ -121,7 +121,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Creates account for a new Doctor
      * @param password
      * @param givenName
      * @param surName
@@ -134,7 +134,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Creates account for a new Admin
      * @param password
      * @param givenName
      * @param surName
@@ -147,7 +147,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Shows form to create new staff members
      */
     public void ShowStaffCreator()
     {
@@ -156,9 +156,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param ID
-     * @return
+     *Returns a list of notifications for a user
+     * @param ID User's ID
+     * @return List of notifications
      */
     public ArrayList<String> getNotifications(String ID)
     {
@@ -167,8 +167,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @return
+     *Returns the currently logged in user
+     * @return User currently logged in
      */
     public User getCurrentUser()
     {
@@ -177,7 +177,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Logs the current user out
      */
     public void LogOut()
     {
@@ -188,7 +188,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Used by secretaries to approve new Patients
      */
     public void ApproveNewPatient()
     {
@@ -203,7 +203,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Used by Patients to request termination
      */
     public void RequestTermination()
     {
@@ -213,7 +213,7 @@ public class Controller {
     }
     
     /**
-     *
+     *Deletes a patient from the system, after asking for their ID
      */
     public void DeletePatient()
     {
@@ -228,8 +228,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @return
+     *Returns a list of names of every doctor
+     * @return List of doctor's names
      */
     public ArrayList<String> GetDoctorNames()
     {
@@ -243,8 +243,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @return
+     *Returns a list of names of every patient
+     * @return List of Patient names
      */
     public ArrayList<String> GetPatientNames()
     {
@@ -258,9 +258,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param name
-     * @return
+     *Returns a list of all reviews given to a doctor
+     * @param name Name of doctor to get reviews of
+     * @return List of reviews
      */
     public ArrayList<String> GetDoctorReviews(String name)
     {
@@ -279,9 +279,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param name
-     * @param review
+     *Adds a review to a doctor
+     * @param name Name of doctor to review
+     * @param review Review contents
      */
     public void AddReview(String name, String review)
     {
@@ -298,9 +298,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param name
-     * @param feedback
+     *Adds private feedback to a doctor
+     * @param name Name of doctor to give feedback
+     * @param feedback Contents of feedback
      */
     public void AddFeedback(String name, String feedback)
     {
@@ -317,10 +317,10 @@ public class Controller {
     }
     
     /**
-     *
-     * @param pName
-     * @param dName
-     * @param time
+     *Creates an appointment between a doctor and patient
+     * @param pName String name of patient
+     * @param dName String name of doctor
+     * @param time String time of appointment
      */
     public void CreateAppointment(String pName, String dName, String time)
     {
@@ -352,9 +352,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param dName
-     * @param time
+     *Requests an appointment
+     * @param dName String name of doctor
+     * @param time String requested time
      */
     public void RequestAppointment(String dName, String time)
     {
@@ -363,9 +363,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param u
-     * @return
+     *Gets list of all appointments for a patient
+     * @param u User to get appointments of
+     * @return List of appointments
      */
     public ArrayList<Appointment> GetAppointments(Patient u)
     {
@@ -373,9 +373,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param u
-     * @return
+     *Gets list of all appointments for a given doctor
+     * @param u Doctor to get appointments of
+     * @return List of appointments
      */
     public ArrayList<Appointment> GetAppointments(Doctor u)
     {
@@ -383,8 +383,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @return
+     *Returns list of medicines
+     * @return List of medicine names
      */
     public ArrayList<String> getMedicineNames()
     {
@@ -393,8 +393,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @return
+     *Returns stock of all medicines
+     * @return Integer List of medicine stocks
      */
     public ArrayList<Integer> getMedicineStock()
     {
@@ -403,9 +403,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param name
-     * @param quantity
+     *Orders more of a medicine
+     * @param name String medicine to order
+     * @param quantity Integer amount to order
      */
     public void OrderMedicine(String name, int quantity)
     {
@@ -414,9 +414,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param name
-     * @param quantity
+     *Gives out medicine to patient
+     * @param name String medicine to give
+     * @param quantity Integer amount to give
      */
     public void UseMedicine(String name, int quantity)
     {
@@ -425,9 +425,9 @@ public class Controller {
     }
     
     /**
-     *
-     * @param a
-     * @param note
+     *Adds a note to an appointment
+     * @param a Appointment Relevant appointment
+     * @param note String note to add
      */
     public void AddNote(Appointment a, String note)
     {
@@ -435,11 +435,11 @@ public class Controller {
     }
     
     /**
-     *
-     * @param p
-     * @param d
+     *Creates a prescription
+     * @param p Patient
+     * @param d Doctor
      * @param notes
-     * @param m
+     * @param m Medicine
      * @param quantity
      * @param dosage
      */
@@ -454,8 +454,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @param a
+     *Sets an appointment as active
+     * @param a Appointment to set
      */
     public void SetCurrentAppointment(Appointment a)
     {
@@ -465,8 +465,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @return
+     *Gets the currently active appointment
+     * @return Appointment currently active
      */
     public Appointment GetCurrentAppointment()
     {
@@ -477,8 +477,8 @@ public class Controller {
     }
     
     /**
-     *
-     * @param name
+     *Creates a new Medicine
+     * @param name String Name of new medicine
      */
     public void CreateMedicine(String name)
     {

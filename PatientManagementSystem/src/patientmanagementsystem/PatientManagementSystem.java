@@ -6,6 +6,7 @@
 package patientmanagementsystem;
 
 import GUI.MainGUI;
+import Serialiser.Serialiser;
 
 /**
  *
@@ -18,7 +19,15 @@ public class PatientManagementSystem {
      */
     public static void main(String[] args) {
         // TODO code application logic here
-        UserManagement userManager = UserManagement.getInstance();
+        UserManagement userManager;
+        Serialiser serialiser = new Serialiser("user_file.ser");
+        if (serialiser.readObject() == null) {
+            userManager = UserManagement.getInstance();
+        }else
+        {
+            userManager = (UserManagement)serialiser.readObject();
+        }
+        //UserManagement userManager = UserManagement.getInstance();
         MedicineManager mediManager = MedicineManager.getInstance();
         userManager.CreateAdmin("bepis", "Big", "Bepsi", "long dong lane");
         System.out.println(userManager.UserCount());

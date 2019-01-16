@@ -5,6 +5,8 @@
  */
 package patientmanagementsystem;
 
+import Serialiser.Serialiser;
+import java.io.Serializable;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 
@@ -12,14 +14,16 @@ import javax.swing.JOptionPane;
  *
  * @author Avebry
  */
-public class UserManagement {
+public class UserManagement implements Serializable{
     private static UserManagement uniqueInstance = null;
     private ArrayList<User> userList;
     private ArrayList<Patient> waitingApproval;
     private User currentUser;
+    
+    
 
     /**
-     *
+     * 
      */
     public UserManagement() {
         userList = new ArrayList<User>();
@@ -27,7 +31,7 @@ public class UserManagement {
     }
     
     /**
-     *
+     *Allows single instance of user manager to be passed throughout program
      * @return
      */
     public static UserManagement getInstance()
@@ -39,8 +43,8 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @return
+     *Gets number of users in the system
+     * @return int The number of users
      */
     public int UserCount()
     {
@@ -48,8 +52,8 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param u
+     *Adds a user to the list
+     * @param u The user to be added
      */
     public void AddUser(User u)
     {
@@ -58,7 +62,7 @@ public class UserManagement {
     }
     
     /**
-     *
+     *Creates a new patient to be added
      * @param gender
      * @param age
      * @param password
@@ -82,7 +86,7 @@ public class UserManagement {
     }
     
     /**
-     *
+     *Creates a new doctor to be added
      * @param password
      * @param givenName
      * @param surName
@@ -102,7 +106,7 @@ public class UserManagement {
     }
     
     /**
-     *
+     *Creates a new admin to be added
      * @param password
      * @param givenName
      * @param surName
@@ -122,7 +126,7 @@ public class UserManagement {
     }
     
     /**
-     *
+     *Creates a new secretary to be added
      * @param password
      * @param givenName
      * @param surName
@@ -142,8 +146,8 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param i
+     *Removes a user with matching ID
+     * @param i The ID of the user to remove
      */
     public void RemoveID(String i)
     {
@@ -153,10 +157,10 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param userID
-     * @param userPass
-     * @return
+     *Checks if login details are valid
+     * @param userID The input user ID to be checked
+     * @param userPass The input password to be checked
+     * @return Boolean true if login details are correct
      */
     public Boolean LogIn(String userID, String userPass)
     {
@@ -172,7 +176,7 @@ public class UserManagement {
     }
     
     /**
-     *
+     *Logs Out
      */
     public void LogOut()
     {
@@ -180,17 +184,17 @@ public class UserManagement {
     }
 
     /**
-     *
-     * @return
+     *Retrieves the currently logged in user
+     * @return User currently logged in
      */
     public User getCurrentUser() {
         return currentUser;
     }
     
     /**
-     *
-     * @param toGet
-     * @return
+     *Retrieves a user with given ID
+     * @param toGet the ID to get
+     * @return User with specified ID
      */
     public User getUserByID(String toGet)
     {
@@ -202,6 +206,10 @@ public class UserManagement {
         return null;
     }
     
+    /**
+     * Adds a new patient to the list of accounts to be approved
+     * @param p The patient to add
+     */
     private void AddToApproval(Patient p)
     {
         waitingApproval.add(p); 
@@ -211,8 +219,8 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param p
+     *Notifies a secretary the patient wishes to be terminated
+     * @param p The patient to be terminated
      */
     public void RequestTermination(User p)
     {
@@ -221,9 +229,9 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param ID
-     * @return
+     *Approves a pending account
+     * @param ID The ID of the account to verify
+     * @return Boolean true if a valid ID was input
      */
     public Boolean ApproveAccount(String ID)
     {
@@ -241,9 +249,9 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param ID
-     * @return
+     *Check if a patient account is approved
+     * @param ID ID of the account to check
+     * @return Boolean True if the account is approved
      */
     public Boolean CheckApproved(String ID)
     {
@@ -256,8 +264,8 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @param ID
+     *Removes a user from the system
+     * @param ID ID of the user to remove
      */
     public void RemoveUser(String ID)
     {
@@ -266,8 +274,8 @@ public class UserManagement {
     }
     
     /**
-     *
-     * @return
+     *Gets a list of all doctors
+     * @return ArrayList list of doctors
      */
     public ArrayList<Doctor> GetDoctors()
     {
@@ -282,8 +290,8 @@ public class UserManagement {
     }    
     
     /**
-     *
-     * @return
+     *Gets a list of all patients
+     * @return ArrayList list of patients
      */
     public ArrayList<Patient> GetPatients()
     {
@@ -298,8 +306,8 @@ public class UserManagement {
     }    
     
     /**
-     *
-     * @param note
+     *Sends a notification to all secretaries
+     * @param note String to send
      */
     public void NotifySecretary(String note)
     {
