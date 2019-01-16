@@ -19,6 +19,7 @@ import patientmanagementsystem.AppointmentManager;
 import patientmanagementsystem.Doctor;
 import patientmanagementsystem.MedicineManager;
 import patientmanagementsystem.Patient;
+import patientmanagementsystem.Prescription;
 import patientmanagementsystem.User;
 import patientmanagementsystem.UserManagement;
 
@@ -305,7 +306,10 @@ public class Controller {
     
     public void CreatePrescription(Patient p, Doctor d, String notes, String m, Integer quantity, String dosage)
     {
-        
+        userManager = UserManagement.getInstance();
+        Prescription temp = new Prescription(p, d, notes, m, quantity, dosage);
+        p.addPrescription(temp);
+        JOptionPane.showMessageDialog(null, "Prescription Added");
     }
     
 }

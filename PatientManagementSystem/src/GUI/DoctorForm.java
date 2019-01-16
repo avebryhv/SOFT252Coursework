@@ -98,6 +98,8 @@ public class DoctorForm extends javax.swing.JFrame {
         spn_Quantity = new javax.swing.JSpinner();
         btn_Prescribe = new javax.swing.JButton();
         btn_Appointment = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        txtDosage = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -180,6 +182,11 @@ public class DoctorForm extends javax.swing.JFrame {
 
         btn_Prescribe.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Prescribe.setText("Create Prescription");
+        btn_Prescribe.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_PrescribeActionPerformed(evt);
+            }
+        });
 
         btn_Appointment.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         btn_Appointment.setText("Create New Appointment");
@@ -188,6 +195,11 @@ public class DoctorForm extends javax.swing.JFrame {
                 btn_AppointmentActionPerformed(evt);
             }
         });
+
+        jLabel6.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jLabel6.setText("Dosage:");
+
+        txtDosage.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -220,7 +232,11 @@ public class DoctorForm extends javax.swing.JFrame {
                                 .addComponent(spn_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btn_Prescribe)
                             .addComponent(btn_Appointment))
-                        .addGap(0, 193, Short.MAX_VALUE)))
+                        .addGap(0, 193, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel6)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(txtDosage)))
                 .addContainerGap())
         );
         jPanel2Layout.setVerticalGroup(
@@ -247,10 +263,14 @@ public class DoctorForm extends javax.swing.JFrame {
                     .addComponent(jLabel5)
                     .addComponent(spn_Quantity, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel6)
+                    .addComponent(txtDosage, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(btn_Prescribe)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGap(18, 18, 18)
                 .addComponent(btn_Appointment)
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addGap(51, 51, 51))
         );
 
         jTabbedPane1.addTab("Appointment View", jPanel2);
@@ -290,6 +310,11 @@ public class DoctorForm extends javax.swing.JFrame {
         CreateAppointment form = new CreateAppointment();
         form.setVisible(true);
     }//GEN-LAST:event_btn_AppointmentActionPerformed
+
+    private void btn_PrescribeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_PrescribeActionPerformed
+        // TODO add your handling code here:
+        controller.CreatePrescription(currentAppointment.getPatient(), currentAppointment.getDoctor(), txt_Notes.getText(), cmb_Medicine.getModel().getSelectedItem().toString(), (Integer)spn_Quantity.getModel().getValue(), txtDosage.getText());
+    }//GEN-LAST:event_btn_PrescribeActionPerformed
 
     /**
      * @param args the command line arguments
@@ -338,6 +363,7 @@ public class DoctorForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -346,6 +372,7 @@ public class DoctorForm extends javax.swing.JFrame {
     private javax.swing.JScrollPane lst_Noti;
     private javax.swing.JList<String> lst_noti;
     private javax.swing.JSpinner spn_Quantity;
+    private javax.swing.JTextField txtDosage;
     private javax.swing.JTextArea txt_Notes;
     // End of variables declaration//GEN-END:variables
 }

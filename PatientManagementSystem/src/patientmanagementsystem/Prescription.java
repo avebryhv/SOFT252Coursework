@@ -13,7 +13,52 @@ import java.util.ArrayList;
  */
 public class Prescription {
     private Patient patient;
-    private ArrayList<Medicine> medicineList;
+    private Doctor doctor;
+    private ArrayList<String> medicineList;
     private ArrayList<Integer> quantities;
-    private String dosage;
+    private ArrayList<String> dosageList;
+    private String notes;
+
+    public Prescription(Patient patient, Doctor doctor,String note, String m, Integer quantity, String dosage) {
+        this.patient = patient;
+        this.doctor = doctor;
+        medicineList = new ArrayList<String>();
+        this.medicineList.add(m);
+        quantities = new ArrayList<Integer>();
+        this.quantities.add(quantity);
+        dosageList = new ArrayList<String>();
+        this.dosageList.add(dosage);
+        notes = note;
+    }
+    
+    public void AddMedicine(String m, Integer q, String d)
+    {
+        medicineList.add(m);
+        quantities.add(q);
+        dosageList.add(d);
+    }
+
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public Doctor getDoctor() {
+        return doctor;
+    }
+
+    public ArrayList<String> getMedicineList() {
+        return medicineList;
+    }
+
+    public ArrayList<Integer> getQuantities() {
+        return quantities;
+    }
+
+    public ArrayList<String> getDosage() {
+        return dosageList;
+    }
+    
+    
+    
+    
 }
