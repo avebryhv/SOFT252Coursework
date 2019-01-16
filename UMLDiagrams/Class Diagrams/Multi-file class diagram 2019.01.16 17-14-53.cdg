@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Multi-file class diagram">
+  <ClassDiagramComponents>
+    <Class name="Admin" package="patientmanagementsystem" visibility="public" xPosition="157.0" yPosition="167.0">
+      <Fields>
+        <Field name="userManager" type="UserManagement" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="CreateSecretary" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Doctor" package="patientmanagementsystem" visibility="public" xPosition="127.0" yPosition="818.0">
+      <Fields>
+        <Field name="reviewList" type="ArrayList&lt;String&gt;" visibility="private"/>
+        <Field name="appointmentList" type="ArrayList&lt;Appointment&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="AddReview" returnType="void" visibility="public">
+          <Argument type="String" name="review"/>
+        </Method>
+        <Method name="getReviewList" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="getAppointmentList" returnType="ArrayList&lt;Appointment&gt;" visibility="public"/>
+        <Method name="AddAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="a"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Patient" package="patientmanagementsystem" visibility="public" xPosition="1463.0" yPosition="546.0">
+      <Fields>
+        <Field name="gender" type="String" visibility="private"/>
+        <Field name="age" type="int" visibility="private"/>
+        <Field name="approvedAccount" type="Boolean" visibility="private"/>
+        <Field name="appointmentList" type="ArrayList&lt;Appointment&gt;" visibility="private"/>
+        <Field name="prescriptionList" type="ArrayList&lt;Prescription&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="gender"/>
+          <Argument type="int" name="age"/>
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="getApprovedAccount" returnType="Boolean" visibility="public"/>
+        <Method name="setApprovedAccount" returnType="void" visibility="public">
+          <Argument type="Boolean" name="approvedAccount"/>
+        </Method>
+        <Method name="getAppointmentList" returnType="ArrayList&lt;Appointment&gt;" visibility="public"/>
+        <Method name="AddAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="a"/>
+        </Method>
+        <Method name="getGender" returnType="String" visibility="public"/>
+        <Method name="getAge" returnType="int" visibility="public"/>
+        <Method name="getPrescriptionList" returnType="ArrayList&lt;Prescription&gt;" visibility="public"/>
+        <Method name="addPrescription" returnType="void" visibility="public">
+          <Argument type="Prescription" name="p"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="Secretary" package="patientmanagementsystem" visibility="public" xPosition="1541.0" yPosition="46.0">
+      <Fields>
+        <Field name="userManager" type="UserManagement" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="ApprovePatient" returnType="void" visibility="public">
+          <Argument type="String" name="ID"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="User" package="patientmanagementsystem" visibility="public" isAbstract="true" xPosition="795.0" yPosition="143.0">
+      <Fields>
+        <Field name="id" type="String" visibility="private"/>
+        <Field name="password" type="String" visibility="private"/>
+        <Field name="givenName" type="String" visibility="private"/>
+        <Field name="surName" type="String" visibility="private"/>
+        <Field name="address" type="String" visibility="private"/>
+        <Field name="notifications" type="ArrayList&lt;String&gt;" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public">
+          <Argument type="String" name="id"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Constructor>
+      </Constructors>
+      <Methods>
+        <Method name="LogIn" returnType="Boolean" visibility="public">
+          <Argument type="String" name="idInput"/>
+          <Argument type="String" name="passInput"/>
+        </Method>
+        <Method name="getId" returnType="String" visibility="public"/>
+        <Method name="getPassword" returnType="String" visibility="public"/>
+        <Method name="getGivenName" returnType="String" visibility="public"/>
+        <Method name="getSurName" returnType="String" visibility="public"/>
+        <Method name="getAddress" returnType="String" visibility="public"/>
+        <Method name="getNotifications" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="AddNotification" returnType="void" visibility="public">
+          <Argument type="String" name="note"/>
+        </Method>
+      </Methods>
+    </Class>
+    <Class name="UserManagement" package="patientmanagementsystem" visibility="public" xPosition="734.0" yPosition="647.0">
+      <Fields>
+        <Field name="uniqueInstance" type="UserManagement" visibility="private" isStatic="true"/>
+        <Field name="userList" type="ArrayList&lt;User&gt;" visibility="private"/>
+        <Field name="waitingApproval" type="ArrayList&lt;Patient&gt;" visibility="private"/>
+        <Field name="currentUser" type="User" visibility="private"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="UserManagement" visibility="public" isStatic="true"/>
+        <Method name="UserCount" returnType="int" visibility="public"/>
+        <Method name="AddUser" returnType="void" visibility="public">
+          <Argument type="User" name="u"/>
+        </Method>
+        <Method name="CreatePatient" returnType="void" visibility="public">
+          <Argument type="String" name="gender"/>
+          <Argument type="int" name="age"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="CreateDoctor" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="CreateAdmin" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="CreateSecretary" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="RemoveID" returnType="void" visibility="public">
+          <Argument type="String" name="i"/>
+        </Method>
+        <Method name="LogIn" returnType="Boolean" visibility="public">
+          <Argument type="String" name="userID"/>
+          <Argument type="String" name="userPass"/>
+        </Method>
+        <Method name="LogOut" returnType="void" visibility="public"/>
+        <Method name="getCurrentUser" returnType="User" visibility="public"/>
+        <Method name="getUserByID" returnType="User" visibility="public">
+          <Argument type="String" name="toGet"/>
+        </Method>
+        <Method name="AddToApproval" returnType="void" visibility="private">
+          <Argument type="Patient" name="p"/>
+        </Method>
+        <Method name="RequestTermination" returnType="void" visibility="public">
+          <Argument type="User" name="p"/>
+        </Method>
+        <Method name="ApproveAccount" returnType="Boolean" visibility="public">
+          <Argument type="String" name="ID"/>
+        </Method>
+        <Method name="CheckApproved" returnType="Boolean" visibility="public">
+          <Argument type="String" name="ID"/>
+        </Method>
+        <Method name="RemoveUser" returnType="void" visibility="public">
+          <Argument type="String" name="ID"/>
+        </Method>
+        <Method name="GetDoctors" returnType="ArrayList&lt;Doctor&gt;" visibility="public"/>
+        <Method name="GetPatients" returnType="ArrayList&lt;Patient&gt;" visibility="public"/>
+        <Method name="NotifySecretary" returnType="void" visibility="public">
+          <Argument type="String" name="note"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="currentUser" source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.Patient" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="patientmanagementsystem.Patient" target="patientmanagementsystem.User"/>
+    <IsRelation name="is" source="patientmanagementsystem.Admin" target="patientmanagementsystem.User"/>
+    <UseRelation source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.User" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="userList" source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.User" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;User&gt;"/>
+    <HasRelation name="waitingApproval" source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.Patient" type="Aggregation" sourceCardinality="1..1" targetCardinality="0..*" collectionType="ArrayList&lt;Patient&gt;"/>
+    <HasRelation name="userManager" source="patientmanagementsystem.Secretary" target="patientmanagementsystem.UserManagement" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <HasRelation name="uniqueInstance" source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.UserManagement" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <IsRelation name="is" source="patientmanagementsystem.Doctor" target="patientmanagementsystem.User"/>
+    <IsRelation name="is" source="patientmanagementsystem.Secretary" target="patientmanagementsystem.User"/>
+    <HasRelation name="userManager" source="patientmanagementsystem.Admin" target="patientmanagementsystem.UserManagement" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.Doctor" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="patientmanagementsystem.UserManagement" target="patientmanagementsystem.UserManagement" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

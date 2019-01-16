@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="AppointmentManager">
+  <ClassDiagramComponents>
+    <Class name="AppointmentManager" package="patientmanagementsystem" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="uniqueInstance" type="AppointmentManager" visibility="private" isStatic="true"/>
+        <Field name="appointmentList" type="ArrayList&lt;Appointment&gt;" visibility="private"/>
+        <Field name="currentAppointment" type="Appointment" visibility="private"/>
+        <Field name="userManager" type="UserManagement" visibility="package"/>
+      </Fields>
+      <Constructors>
+        <Constructor visibility="public"/>
+      </Constructors>
+      <Methods>
+        <Method name="getInstance" returnType="AppointmentManager" visibility="public" isStatic="true"/>
+        <Method name="AddAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="a"/>
+        </Method>
+        <Method name="CreateAppointment" returnType="void" visibility="public">
+          <Argument type="Doctor" name="d"/>
+          <Argument type="Patient" name="p"/>
+          <Argument type="String" name="time"/>
+        </Method>
+        <Method name="getCurrentAppointment" returnType="Appointment" visibility="public"/>
+        <Method name="setCurrentAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="currentAppointment"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations>
+    <HasRelation name="uniqueInstance" source="patientmanagementsystem.AppointmentManager" target="patientmanagementsystem.AppointmentManager" type="Aggregation" sourceCardinality="1..1" targetCardinality="1..1"/>
+    <UseRelation source="patientmanagementsystem.AppointmentManager" target="patientmanagementsystem.AppointmentManager" sourceCardinality="1..1" targetCardinality="1..1"/>
+  </ClassDiagramRelations>
+</ClassDiagram>

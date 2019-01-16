@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ClassDiagram name="Controller">
+  <ClassDiagramComponents>
+    <Class name="Controller" package="Controller" visibility="public" xPosition="20.0" yPosition="20.0">
+      <Fields>
+        <Field name="userManager" type="UserManagement" visibility="package"/>
+        <Field name="appointmentManager" type="AppointmentManager" visibility="package"/>
+        <Field name="medicineManager" type="MedicineManager" visibility="package"/>
+      </Fields>
+      <Constructors/>
+      <Methods>
+        <Method name="LogIn" returnType="Boolean" visibility="public">
+          <Argument type="String" name="ID"/>
+          <Argument type="String" name="password"/>
+        </Method>
+        <Method name="CreatePatientAccount" returnType="void" visibility="public">
+          <Argument type="String" name="gender"/>
+          <Argument type="Integer" name="age"/>
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="ShowCreatePatient" returnType="void" visibility="public"/>
+        <Method name="CreateSecretaryAccount" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="CreateDoctorAccount" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="CreateAdminAccount" returnType="void" visibility="public">
+          <Argument type="String" name="password"/>
+          <Argument type="String" name="givenName"/>
+          <Argument type="String" name="surName"/>
+          <Argument type="String" name="address"/>
+        </Method>
+        <Method name="ShowStaffCreator" returnType="void" visibility="public"/>
+        <Method name="getNotifications" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="String" name="ID"/>
+        </Method>
+        <Method name="getCurrentUser" returnType="User" visibility="public"/>
+        <Method name="LogOut" returnType="void" visibility="public"/>
+        <Method name="ApproveNewPatient" returnType="void" visibility="public"/>
+        <Method name="RequestTermination" returnType="void" visibility="public"/>
+        <Method name="DeletePatient" returnType="void" visibility="public"/>
+        <Method name="GetDoctorNames" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="GetPatientNames" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="GetDoctorReviews" returnType="ArrayList&lt;String&gt;" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+        <Method name="AddReview" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="review"/>
+        </Method>
+        <Method name="AddFeedback" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="String" name="feedback"/>
+        </Method>
+        <Method name="CreateAppointment" returnType="void" visibility="public">
+          <Argument type="String" name="pName"/>
+          <Argument type="String" name="dName"/>
+          <Argument type="String" name="time"/>
+        </Method>
+        <Method name="RequestAppointment" returnType="void" visibility="public">
+          <Argument type="String" name="dName"/>
+          <Argument type="String" name="time"/>
+        </Method>
+        <Method name="GetAppointments" returnType="ArrayList&lt;Appointment&gt;" visibility="public">
+          <Argument type="Patient" name="u"/>
+        </Method>
+        <Method name="GetAppointments" returnType="ArrayList&lt;Appointment&gt;" visibility="public">
+          <Argument type="Doctor" name="u"/>
+        </Method>
+        <Method name="getMedicineNames" returnType="ArrayList&lt;String&gt;" visibility="public"/>
+        <Method name="getMedicineStock" returnType="ArrayList&lt;Integer&gt;" visibility="public"/>
+        <Method name="OrderMedicine" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="UseMedicine" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+          <Argument type="int" name="quantity"/>
+        </Method>
+        <Method name="AddNote" returnType="void" visibility="public">
+          <Argument type="Appointment" name="a"/>
+          <Argument type="String" name="note"/>
+        </Method>
+        <Method name="CreatePrescription" returnType="void" visibility="public">
+          <Argument type="Patient" name="p"/>
+          <Argument type="Doctor" name="d"/>
+          <Argument type="String" name="notes"/>
+          <Argument type="String" name="m"/>
+          <Argument type="Integer" name="quantity"/>
+          <Argument type="String" name="dosage"/>
+        </Method>
+        <Method name="SetCurrentAppointment" returnType="void" visibility="public">
+          <Argument type="Appointment" name="a"/>
+        </Method>
+        <Method name="GetCurrentAppointment" returnType="Appointment" visibility="public"/>
+        <Method name="CreateMedicine" returnType="void" visibility="public">
+          <Argument type="String" name="name"/>
+        </Method>
+      </Methods>
+    </Class>
+  </ClassDiagramComponents>
+  <ClassDiagramRelations/>
+</ClassDiagram>
