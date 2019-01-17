@@ -3,17 +3,18 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/Medicine.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/PatientForm.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/CreateAppointment.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/DoctorForm.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/Controller/Controller.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/PrescriptionView.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/MainGUI.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/patientManagementSystem/PatientManagementSystem.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/test/patientmanagementsystem/UserTest.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/AdminForm.java</file>
-            <file>file:/C:/Users/ahoughton-vowles/Documents/GitHub/SOFT252Coursework/PatientManagementSystem/src/GUI/SecretaryForm.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/Medicine.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/CreateStaff.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/DoctorRatings.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/CreateAccount.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/AdminForm.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/PatientForm.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/CreateAppointment.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/patientManagementSystem/PatientManagementSystem.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/DoctorForm.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/MainGUI.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/Controller/Controller.java</file>
+            <file>file:/F:/Documents/Github/SOFT252Coursework/PatientManagementSystem/src/GUI/SecretaryForm.java</file>
         </group>
     </open-files>
 </project-private>
