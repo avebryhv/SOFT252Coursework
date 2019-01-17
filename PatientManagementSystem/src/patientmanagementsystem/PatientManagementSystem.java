@@ -21,14 +21,14 @@ public class PatientManagementSystem {
     public static void main(String[] args) {
         // TODO code application logic here
         UserManagement userManager;
-        Serialiser serialiser = new Serialiser("user_file.ser");
-        if (serialiser.readObject() == null) {
-            userManager = UserManagement.getInstance();
-        }else
-        {
-            userManager = (UserManagement)serialiser.readObject();
-        }
-        //UserManagement userManager = UserManagement.getInstance();
+//        Serialiser serialiser = new Serialiser("user_file.ser");
+//        if (serialiser.readObject() == null) {
+//            userManager = UserManagement.getInstance();
+//        }else
+//        {
+//            userManager = (UserManagement)serialiser.readObject();
+//        }
+        userManager = UserManagement.getInstance();
         MedicineManager mediManager = MedicineManager.getInstance();
         InitialUsers(userManager);
         MainGUI initialForm = new MainGUI();
