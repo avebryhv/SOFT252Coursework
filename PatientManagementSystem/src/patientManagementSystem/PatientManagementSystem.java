@@ -3,10 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package patientmanagementsystem;
+package patientManagementSystem;
 
 import GUI.MainGUI;
 import Serialiser.Serialiser;
+import patientmanagementsystem.MedicineManager;
+import patientmanagementsystem.UserManagement;
 
 /**
  *Main Method
